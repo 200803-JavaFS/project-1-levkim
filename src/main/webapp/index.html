@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bootstrap</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,300..800&family=Recursive:slnt,wght,CRSV,MONO@-15..0,300..800,0..1,0..1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-primary">
+        <a class="navbar-brand mr-3" href="#">name</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarExpandContent" aria-controls="navbarExpandContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarExpandContent">
+            <div class="navbar-nav">
+                <a class="nav-link" href="#">active</a>
+                <a class="nav-link" href="#">active</a>
+                <a class="nav-link" href="#">active</a>
+                <a class="nav-link" href="#">active</a>
+                <a class="nav-link" href="#">active</a>
+            </div>
+
+            <form class="form-inline ml-auto">
+                <input class="form-control" type="search" placeholder="Search..." aria-label="search">
+                <button class="ml-2 btn btn-dark" type="submit">Go</button>
+            </form>
+        </div>
+    </nav>
+
+    <main class="container col-12 mb-5">
+        <div class="row justify-content-center">
+            <header class="col-12 jumbotron text-center">
+                <h1 class="h1">Company title</h1>
+                <h2 class="lead h2">Reimbursement Center</h2>
+            </header>
+        </div>
+
+        <div class="row justify-content-center">
+            <aside class="nav nav-pills nav-justified flex-column col-md-3 p-5 mr-5 border-right d-none d-sm-none d-md-block" id="pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link" id="pills-add-tab" data-toggle="pill" href="#pills-add" role="tab" aria-controls="pills-add" aria-selected="false">add new?</a>
+                <a class="nav-link" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">all reimbursements</a>
+                <a class="nav-link" id="pills-pends-tab" data-toggle="pill" href="#pills-pends" role="tab" aria-controls="pills-pends" aria-selected="false">pending</a>
+                <a class="nav-link" id="pills-submitted-tab" data-toggle="pill" href="#pills-submitted" role="tab" aria-controls="pills-submitted" aria-selected="false">submitted</a>
+                <a class="nav-link" id="pills-approve-tab" data-toggle="pill" href="#pills-approve" role="tab" aria-controls="pills-approve" aria-selected="false">approved</a>
+                <a class="nav-link" id="pills-denied-tab" data-toggle="pill" href="#pills-denied" role="tab" aria-controls="pills-denied" aria-selected="false">denied</a>
+            </aside>
+
+            <section class="col-md-8 mt-5 tab-content" id="pills-tabContent">
+                <div class="tab-pane fade" id="pills-add" role="tabpanel" aria-labelledby="pills-add-tab">
+                    <article class="p-5 border rounded shadow">
+                        <h1>hi</h1>
+                        <p>reimbursement</p>
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label for="amount">Amount of Reimbursement</label>
+                                <input class="form-control" type="number" name="amount">
+                            </div>
+                            <div class="form-group">
+                                <label for="type">Select Type</label>
+                                <select class="form-control" name="type" id="reimb_type">
+                                    <option value="dummy">test</option>
+                                    <option value="dummy2">tent</option>
+                                    <option value="dummy3">tert</option>
+                                    <option value="dummy4">teat</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="receipt">Upload Image of Receipt</label>
+                                <input class="form-control-file" type="file" name="receipt" id="reimb_receipt">
+                            </div>
+                            <button class="btn btn-success" type="submit">Send</button>
+                        </form>
+                    </article>
+                </div>
+                <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
+                    <article class="p-5 border rounded shadow">
+                        <h1>hi</h1>
+                        <p>reimbursement</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi culpa eligendi vel quaerat laborum aperiam, harum beatae perspiciatis minus totam iste, tempora nobis? Ipsam pariatur in omnis minus rem. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa rerum voluptate hic, voluptates dicta eligendi dolorum provident suscipit quas ratione repellat eveniet qui perferendis quidem explicabo soluta est aut mollitia.</p>
+                        <code>
+                            public Timestamp getCurrentTime() {
+                            Date date = new Date();
+                            return Timestamp(date.getTime());
+                            }
+                        </code>
+                    </article>
+                </div>
+                <div class="tab-pane fade" id="pills-pends" role="tabpanel" aria-labelledby="pills-pends-tab">
+                
+                </div>
+                <div class="tab-pane fade" id="pills-submitted" role="tabpanel" aria-labelledby="pills-submitted-tab">
+                
+                </div>
+                <div class="tab-pane fade" id="pills-approve" role="tabpanel" aria-labelledby="pills-approve-tab">
+                
+                </div>
+                <div class="tab-pane fade" id="pills-denied" role="tabpanel" aria-labelledby="pills-denied-tab">
+                
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="container">
+        copyright c etc
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+</html>

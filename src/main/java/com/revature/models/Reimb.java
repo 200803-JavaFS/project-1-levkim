@@ -2,69 +2,152 @@ package com.revature.models;
 
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ers_reimbursement")
 public class Reimb {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="reimb_id", nullable=false)
 	private int id;
+	
+	@Column(name="reimb_amount", nullable=false)
+	private double amt;
+	
+	@Column(name="reimb_submitted", nullable=false)
 	private Timestamp submitted;
+	
+	@Column(name="reimb_resolved")
 	private Timestamp resolved;
+	
+	@Column(name="reimb_description")
 	private String description;
+	
+	@Column(name="reimb_receipt")
 	private String receipt;
-	private String author;
-	private String resolver;
+	
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="reimb_author", referencedColumnName="ers_users_id", nullable=false)
+	private User author;
+	
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="reimb_resolver", referencedColumnName="ers_users_id")
+	private User resolver;
+	
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="reimb_status_id_fk", referencedColumnName="reimb_status_id", nullable=false)
 	private ReimbStatus status;
+	
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="reimb_type_id_fk", referencedColumnName="reimb_type_id", nullable=false)
 	private ReimbType type;
 	
+	public Reimb() {
+		super();
+	}
+
+	public Reimb(int id, double amt, Timestamp submitted, Timestamp resolved, String description, String receipt,
+			User author, User resolver, ReimbStatus status, ReimbType type) {
+		super();
+		this.id = id;
+		this.amt = amt;
+		this.submitted = submitted;
+		this.resolved = resolved;
+		this.description = description;
+		this.receipt = receipt;
+		this.author = author;
+		this.resolver = resolver;
+		this.status = status;
+		this.type = type;
+	}
+
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public double getAmt() {
+		return amt;
+	}
+
+	public void setAmt(double amt) {
+		this.amt = amt;
+	}
+
 	public Timestamp getSubmitted() {
 		return submitted;
 	}
+	
 	public void setSubmitted(Timestamp submitted) {
 		this.submitted = submitted;
 	}
+	
 	public Timestamp getResolved() {
 		return resolved;
 	}
+	
 	public void setResolved(Timestamp resolved) {
 		this.resolved = resolved;
 	}
+	
 	public String getDescription() {
 		return description;
 	}
+	
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	public String getReceipt() {
 		return receipt;
 	}
+	
 	public void setReceipt(String receipt) {
 		this.receipt = receipt;
 	}
-	public String getAuthor() {
+	
+	public User getAuthor() {
 		return author;
 	}
-	public void setAuthor(String author) {
+	
+	public void setAuthor(User author) {
 		this.author = author;
 	}
-	public String getResolver() {
+	
+	public User getResolver() {
 		return resolver;
 	}
-	public void setResolver(String resolver) {
+	
+	public void setResolver(User resolver) {
 		this.resolver = resolver;
 	}
+	
 	public ReimbStatus getStatus() {
 		return status;
 	}
+	
 	public void setStatus(ReimbStatus status) {
 		this.status = status;
 	}
+	
 	public ReimbType getType() {
 		return type;
 	}
+	
 	public void setType(ReimbType type) {
 		this.type = type;
 	}

@@ -1,33 +1,24 @@
 package com.revature.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 public class ConnectUtil {
+
+	private static Session ses; 
+	private static SessionFactory sf = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	
-public static Connection getConnection() throws SQLException {
-		
-		try {
-			Class.forName("org.postgresql.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+	public static Session getSession() {
+		if (ses == null) {
+			ses = sf.openSession();
 		}
-		
-		String url = "jdbc:postgresql://demosdb.cnhivgivm0u1.us-east-1.rds.amazonaws.com:5432/project1";
-		String username = "postgres";
-		String password = "password";
-		
-		return DriverManager.getConnection(url, username, password);
-		
+		return ses;
 	}
 	
-	public static void main(String[] args) {
-		try (Connection conn = ConnectUtil.getConnection()) {
-			System.out.println("connection successful!");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	public static void closeSession() {
+		ses.close();
+		ses = null;
 	}
 
 }

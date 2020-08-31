@@ -1,5 +1,7 @@
 package com.revature.models;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -41,6 +44,9 @@ public class User {
 	@JoinColumn(name="user_role_id", referencedColumnName="ers_user_role_id", nullable=false)
 	private UserType type;
 	
+	@OneToMany(mappedBy="author", fetch=FetchType.LAZY)
+	private List<Reimb> reimbs;
+	
 	public User() {
 		super();
 	}
@@ -49,6 +55,16 @@ public class User {
 		super();
 		this.username = username;
 		this.password = password;
+	}
+	
+	public User(String username, String password, String first_name, String last_name, String email, UserType type) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.email = email;
+		this.type = type;
 	}
 
 	public User(int id, String username, String password, String first_name, String last_name, String email,
@@ -61,6 +77,19 @@ public class User {
 		this.last_name = last_name;
 		this.email = email;
 		this.type = type;
+	}
+	
+	public User(int id, String username, String password, String first_name, String last_name, String email,
+			UserType type, List<Reimb> reimbs) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.email = email;
+		this.type = type;
+		this.reimbs = reimbs;
 	}
 
 	public int getId() {

@@ -12,6 +12,7 @@ public interface UserDAO {
 	public boolean delete(int id);
 	public User findById(int id);
 	public User findByName(String username);
+	public boolean checkCreds(String username, String password);
 	public List<User> findByType(UserType type);
 	public List<User> findAll();
 

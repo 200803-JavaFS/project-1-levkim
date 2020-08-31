@@ -55,6 +55,30 @@ public class Reimb {
 	
 	public Reimb() {
 		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Reimb(double amt, Timestamp submitted, User author, ReimbStatus status, ReimbType type) {
+		super();
+		this.amt = amt;
+		this.submitted = submitted;
+		this.author = author;
+		this.status = status;
+		this.type = type;
+	}
+
+	public Reimb(double amt, Timestamp submitted, Timestamp resolved, String description, String receipt, User author,
+			User resolver, ReimbStatus status, ReimbType type) {
+		super();
+		this.amt = amt;
+		this.submitted = submitted;
+		this.resolved = resolved;
+		this.description = description;
+		this.receipt = receipt;
+		this.author = author;
+		this.resolver = resolver;
+		this.status = status;
+		this.type = type;
 	}
 
 	public Reimb(int id, double amt, Timestamp submitted, Timestamp resolved, String description, String receipt,

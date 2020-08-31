@@ -68,15 +68,28 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<User> findByType(UserType type) {
-		// TODO Auto-generated method stub
+		Session ses = ConnectUtil.getSession();
+		List<User> list = ses.createQuery("FROM User WHERE type = " + type).list();
 		return null;
 	}
 
 	@Override
 	public List<User> findAll() {
 		Session ses = ConnectUtil.getSession();
-		List<User> list = ses.createQuery("SELECT * FROM Reimb").list();
+		List<User> list = ses.createQuery("FROM User").list();
 		return list;
+	}
+
+	@Override
+	public boolean checkCreds(String username, String password) {
+		Session ses = ConnectUtil.getSession();
+		try {
+			ses.createQuery("FROM User WHERE username = " + username + "AND password = " + password);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

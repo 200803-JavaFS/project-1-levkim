@@ -27,10 +27,6 @@ public class UserService {
 		return dao.findByName(username);
 	}
 	
-	public boolean checkCreds(String username, String password) {
-		return dao.checkCreds(username, password);
-	}
-	
 	public boolean add(User u) {
 		return dao.add(u);
 	}

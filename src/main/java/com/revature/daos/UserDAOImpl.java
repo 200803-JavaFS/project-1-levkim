@@ -10,7 +10,7 @@ import com.revature.models.UserType;
 import com.revature.util.ConnectUtil;
 
 public class UserDAOImpl implements UserDAO {
-
+	
 	@Override
 	public boolean add(User u) {
 		Session ses = ConnectUtil.getSession();
@@ -70,7 +70,7 @@ public class UserDAOImpl implements UserDAO {
 	public List<User> findByType(UserType type) {
 		Session ses = ConnectUtil.getSession();
 		List<User> list = ses.createQuery("FROM User WHERE type = " + type).list();
-		return null;
+		return list;
 	}
 
 	@Override
@@ -83,13 +83,14 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean checkCreds(String username, String password) {
 		Session ses = ConnectUtil.getSession();
+		
 		try {
-			ses.createQuery("FROM User WHERE username = " + username + "AND password = " + password);
+			ses.createQuery("FROM User WHERE username = " + username + " AND password = " + password);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
-		return false;
 	}
 
 }

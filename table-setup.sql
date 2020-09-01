@@ -50,3 +50,7 @@ insert into ers_reimbursement_type (reimb_type) values ('TRAVEL');
 insert into ers_reimbursement_type (reimb_type) values ('LODGING');
 insert into ers_reimbursement_type (reimb_type) values ('FOOD');
 insert into ers_reimbursement_type (reimb_type) values ('OTHER');
+
+insert into ers_reimbursement_status (reimb_status) values ('PENDING');
+insert into ers_reimbursement_status (reimb_status) values ('APPROVED');
+insert into ers_reimbursement_status (reimb_status) values ('DECLINED');

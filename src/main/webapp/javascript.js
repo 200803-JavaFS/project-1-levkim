@@ -19,7 +19,8 @@ async function loginFunc() {
     });
 
     if (resp === 200) {
-        document.getElementById("login-row").innerText = "Login successful.";
+        console.log(resp);
+        document.getElementById("login-row").innerText = "You have successfully logged in!";
     } else {
         document.getElementById("login-row").innerText = "Login failed.";
     }

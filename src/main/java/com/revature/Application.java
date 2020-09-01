@@ -25,19 +25,19 @@ public class Application {
 		String p1 = "1234hash";
 		StringBuilder sb1 = new StringBuilder();
 		sb1.append(p1.hashCode());
-		String p1hash = sb1.toString();
+		String p1hash = new String(sb1);
 		User u1 = new User("username", p1hash, "sir drake", "sinclair", "drake@email.com", udao.findTypeId(2));
 		
 		String p2 = "password";
 		StringBuilder sb2 = new StringBuilder();
 		sb2.append(p2.hashCode());
-		String p2hash = sb2.toString();
+		String p2hash = new String(sb2);
 		User u2 = new User("whatsup", p2hash, "maam", "obadiah", "igloo@email.net", udao.findTypeId(2));
 		
 		String p3 = "dedede";
 		StringBuilder sb3 = new StringBuilder();
 		sb3.append(p3.hashCode());
-		String p3hash = sb3.toString();
+		String p3hash = new String(sb3);
 		User u3 = new User("ioio", p3hash, "hello", "freya", "odin@norse.org", udao.findTypeId(1));
 		
 		udao.add(u1);

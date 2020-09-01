@@ -61,7 +61,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User findByName(String username) {
 		Session ses = ConnectUtil.getSession();
-		User u = ses.get(User.class, username);
+		User u = ses.createQuery("FROM User WHERE username = '" + username + "'", User.class).uniqueResult();
 		return u;
 	}
 

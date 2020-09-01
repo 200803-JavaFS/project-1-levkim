@@ -18,7 +18,7 @@ public class LoginService {
 			if (u != null) {
 				StringBuilder sb = new StringBuilder();
 				sb.append(password.hashCode());
-				String hashed = sb.toString();
+				String hashed = new String(sb);
 				
 				if (u.getPassword().equals(hashed) && dao.checkCreds(username, hashed)) {
 					return true;

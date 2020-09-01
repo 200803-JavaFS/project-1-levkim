@@ -13,10 +13,11 @@ public class LoginService {
 		try {
 			String username = l.username;
 			String password = l.password;
-			
 			User u = dao.findByName(username);
+			
 			if (u != null) {
-				StringBuilder sb = new StringBuilder(password.hashCode());
+				StringBuilder sb = new StringBuilder();
+				sb.append(password.hashCode());
 				String hashed = sb.toString();
 				
 				if (u.getPassword().equals(hashed) && dao.checkCreds(username, hashed)) {
@@ -28,7 +29,7 @@ public class LoginService {
 				System.out.println("User does not exist!");
 			}
 		} catch (NullPointerException e) {
-			System.out.println("Incorrect credentials entered.");
+			System.out.println("Login failed.");
 			e.printStackTrace();
 		}
 		return false;

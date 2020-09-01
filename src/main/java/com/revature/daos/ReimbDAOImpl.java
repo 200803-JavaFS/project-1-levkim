@@ -23,7 +23,6 @@ public class ReimbDAOImpl implements ReimbDAO {
 			e.printStackTrace();
 			return false;
 		}
-		
 	}
 
 	@Override
@@ -37,7 +36,6 @@ public class ReimbDAOImpl implements ReimbDAO {
 			e.printStackTrace();
 			return false;
 		}
-		
 	}
 
 	@Override
@@ -63,22 +61,48 @@ public class ReimbDAOImpl implements ReimbDAO {
 	@Override
 	public List<Reimb> findByType(ReimbType type) {
 		Session ses = ConnectUtil.getSession();
-		List<Reimb> list = ses.createQuery("FROM Reimb WHERE type = " + type).list();
+		List<Reimb> list = ses.createQuery("FROM Reimb WHERE type = " + type, Reimb.class).list();
 		return list;
 	}
 
 	@Override
 	public List<Reimb> findByStatus(ReimbStatus status) {
 		Session ses = ConnectUtil.getSession();
-		List<Reimb> list = ses.createQuery("FROM Reimb WHERE status = " + status).list();
+		List<Reimb> list = ses.createQuery("FROM Reimb WHERE status = " + status, Reimb.class).list();
 		return list;
 	}
 
 	@Override
 	public List<Reimb> findAll() {
 		Session ses = ConnectUtil.getSession();
-		List<Reimb> list = ses.createQuery("FROM Reimb").list();
+		List<Reimb> list = ses.createQuery("FROM Reimb", Reimb.class).list();
 		return list;
+	}
+
+	@Override
+	public ReimbType findTypeId(int id) {
+		Session ses = ConnectUtil.getSession();
+		
+		try {
+			ReimbType type = ses.get(ReimbType.class, id);
+			return type;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public ReimbStatus findStatusId(int id) {
+		Session ses = ConnectUtil.getSession();
+		
+		try {
+			ReimbStatus status = ses.get(ReimbStatus.class, id);
+			return status;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

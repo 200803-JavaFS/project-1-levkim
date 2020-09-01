@@ -15,5 +15,6 @@ public interface UserDAO {
 	public boolean checkCreds(String username, String password);
 	public List<User> findByType(UserType type);
 	public List<User> findAll();
+	public UserType findTypeId(int id);
 
 }

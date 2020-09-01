@@ -12,6 +12,8 @@ public interface ReimbDAO {
 	public boolean update(Reimb r);
 	public boolean delete(int id);
 	public Reimb findById(int id);
+	public ReimbType findTypeId(int id);
+	public ReimbStatus findStatusId(int id);
 	public List<Reimb> findByType(ReimbType type);
 	public List<Reimb> findByStatus(ReimbStatus status);
 	public List<Reimb> findAll();

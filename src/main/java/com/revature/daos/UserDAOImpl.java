@@ -49,7 +49,6 @@ public class UserDAOImpl implements UserDAO {
 			e.printStackTrace();
 			return false;
 		}
-		
 	}
 
 	@Override
@@ -69,14 +68,14 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<User> findByType(UserType type) {
 		Session ses = ConnectUtil.getSession();
-		List<User> list = ses.createQuery("FROM User WHERE type = " + type).list();
+		List<User> list = ses.createQuery("FROM User WHERE type = " + type, User.class).list();
 		return list;
 	}
 
 	@Override
 	public List<User> findAll() {
 		Session ses = ConnectUtil.getSession();
-		List<User> list = ses.createQuery("FROM User").list();
+		List<User> list = ses.createQuery("FROM User", User.class).list();
 		return list;
 	}
 
@@ -90,6 +89,19 @@ public class UserDAOImpl implements UserDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
+		}
+	}
+
+	@Override
+	public UserType findTypeId(int id) {
+		Session ses = ConnectUtil.getSession();
+		
+		try {
+			UserType type = ses.get(UserType.class, id);
+			return type;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 

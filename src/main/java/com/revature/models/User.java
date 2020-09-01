@@ -5,8 +5,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -140,7 +138,6 @@ public class User {
 		this.email = email;
 	}
 	
-	@Enumerated(EnumType.STRING)
 	public UserType getType() {
 		return type;
 	}
@@ -212,7 +209,7 @@ public class User {
 				+ "   First Name: " + first_name + "\n"
 				+ "   Last Name: " + last_name + "\n"
 				+ "   Email: " + email + "\n"
-				+ "   Type: " + type;
+				+ "   Type: " + type.getType();
 	}
 	
 }

@@ -14,6 +14,9 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		
 		<mapping class="com.revature.models.User" />
+		<mapping class="com.revature.models.UserType" />
 		<mapping class="com.revature.models.Reimb" />
+		<mapping class="com.revature.models.ReimbType" />
+		<mapping class="com.revature.models.ReimbStatus" />
 	</session-factory>
 </hibernate-configuration>

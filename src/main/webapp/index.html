@@ -14,23 +14,17 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand mr-3" href="#">name</a>
+        <a class="navbar-brand mr-3" href="#">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarExpandContent" aria-controls="navbarExpandContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarExpandContent">
             <div class="navbar-nav">
-                <a class="nav-link" href="#">active</a>
-                <a class="nav-link" href="#">active</a>
-                <a class="nav-link" href="#">active</a>
-                <a class="nav-link" href="#">active</a>
-                <a class="nav-link" href="#">active</a>
+                <a class="nav-link m-1" href="#">Add New Reimbursement</a>
             </div>
 
-            <form class="form-inline ml-auto">
-                <input class="form-control" type="search" placeholder="Type and press enter to search." aria-label="search">
-            </form>
+            <a class="nav-link btn btn-danger ml-auto" href="#">Log Out</a>
         </div>
     </nav>
 
@@ -44,44 +38,20 @@
 
         <div class="row justify-content-center">
             <aside class="nav nav-pills nav-justified flex-column col-md-3 p-5 mr-5 border-right d-none d-sm-none d-md-block" id="pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link" id="pills-add-tab" data-toggle="pill" href="#pills-add" role="tab" aria-controls="pills-add" aria-selected="false">add new?</a>
                 <a class="nav-link active" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">all reimbursements</a>
                 <a class="nav-link" id="pills-pends-tab" data-toggle="pill" href="#pills-pends" role="tab" aria-controls="pills-pends" aria-selected="false">pending</a>
-                <a class="nav-link" id="pills-submitted-tab" data-toggle="pill" href="#pills-submitted" role="tab" aria-controls="pills-submitted" aria-selected="false">submitted</a>
                 <a class="nav-link" id="pills-approve-tab" data-toggle="pill" href="#pills-approve" role="tab" aria-controls="pills-approve" aria-selected="false">approved</a>
                 <a class="nav-link" id="pills-denied-tab" data-toggle="pill" href="#pills-denied" role="tab" aria-controls="pills-denied" aria-selected="false">denied</a>
+                <form class="form-inline mt-2" method="GET" action="#">
+                    <input class="form-control" type="search" name="findId" id="findId" placeholder="Enter ID to search">
+                </form>
             </aside>
 
             <section class="col-md-8 mt-5 tab-content" id="pills-tabContent">
-                <div class="tab-pane fade" id="pills-add" role="tabpanel" aria-labelledby="pills-add-tab">
-                    <article class="p-5 border rounded shadow">
-                        <h1>hi</h1>
-                        <p>reimbursement</p>
-                        <form action="#" method="post">
-                            <div class="form-group">
-                                <label for="amount">Amount of Reimbursement</label>
-                                <input class="form-control" type="number" name="amount">
-                            </div>
-                            <div class="form-group">
-                                <label for="type">Select Type</label>
-                                <select class="form-control" name="type" id="reimb_type">
-                                    <option value="dummy">test</option>
-                                    <option value="dummy2">tent</option>
-                                    <option value="dummy3">tert</option>
-                                    <option value="dummy4">teat</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="receipt">Upload Image of Receipt</label>
-                                <input class="form-control-file" type="file" name="receipt" id="reimb_receipt">
-                            </div>
-                            <button class="btn btn-success" type="submit">Send</button>
-                        </form>
-                    </article>
-                </div>
                 <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
-                    <article class="p-5 border rounded shadow">
-                        <h1>hi</h1>
+                    <div class="reimbursement mb-5">
+                        <h3 class="h3 mb-3 text-center">All Reimbursements</h3>
+                        <article class="p-5 border rounded shadow">
                         <p>reimbursement</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi culpa eligendi vel quaerat laborum aperiam, harum beatae perspiciatis minus totam iste, tempora nobis? Ipsam pariatur in omnis minus rem. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa rerum voluptate hic, voluptates dicta eligendi dolorum provident suscipit quas ratione repellat eveniet qui perferendis quidem explicabo soluta est aut mollitia.</p>
                         <code>
@@ -90,47 +60,68 @@
                             return Timestamp(date.getTime());
                             }
                         </code>
-                    </article>
+                        </article>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="pills-pends" role="tabpanel" aria-labelledby="pills-pends-tab">
-                    <article class="p-5 border rounded shadow">
-                        <h1>pending</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi culpa eligendi vel
-                            quaerat laborum aperiam, harum beatae perspiciatis minus totam iste, tempora nobis? Ipsam
-                            pariatur in omnis minus rem. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa
-                            rerum voluptate hic, voluptates dicta eligendi dolorum provident suscipit quas ratione
-                            repellat eveniet qui perferendis quidem explicabo soluta est aut mollitia.</p>
-                    </article>
-                </div>
-                <div class="tab-pane fade" id="pills-submitted" role="tabpanel" aria-labelledby="pills-submitted-tab">
-                    <article class="p-5 border rounded shadow">
-                        <h1>submitted</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi culpa eligendi vel
-                            quaerat laborum aperiam, harum beatae perspiciatis minus totam iste, tempora nobis? Ipsam
-                            pariatur in omnis minus rem. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa
-                            rerum voluptate hic, voluptates dicta eligendi dolorum provident suscipit quas ratione
-                            repellat eveniet qui perferendis quidem explicabo soluta est aut mollitia.</p>
-                    </article>
+                    <div class="reimbursement mb-5">
+                        <h3 class="h3 mb-3 text-center">Pending Reimbursements</h3>
+                        <article class="p-5 border rounded shadow">
+                            <p>reimbursement</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi culpa eligendi vel
+                                quaerat laborum aperiam, harum beatae perspiciatis minus totam iste, tempora nobis?
+                                Ipsam pariatur in omnis minus rem. Lorem ipsum, dolor sit amet consectetur adipisicing
+                                elit. Ipsa rerum voluptate hic, voluptates dicta eligendi dolorum provident suscipit
+                                quas ratione repellat eveniet qui perferendis quidem explicabo soluta est aut mollitia.
+                            </p>
+                            <code>
+                                public Timestamp getCurrentTime() {
+                                Date date = new Date();
+                                return Timestamp(date.getTime());
+                                }
+                            </code>
+                        </article>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="pills-approve" role="tabpanel" aria-labelledby="pills-approve-tab">
-                    <article class="p-5 border rounded shadow">
-                        <h1>approved</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi culpa eligendi vel
-                            quaerat laborum aperiam, harum beatae perspiciatis minus totam iste, tempora nobis? Ipsam
-                            pariatur in omnis minus rem. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa
-                            rerum voluptate hic, voluptates dicta eligendi dolorum provident suscipit quas ratione
-                            repellat eveniet qui perferendis quidem explicabo soluta est aut mollitia.</p>
-                    </article>
+                    <div class="reimbursement mb-5">
+                        <h3 class="h3 mb-3 text-center">Approved Reimbursements</h3>
+                        <article class="p-5 border rounded shadow">
+                            <p>reimbursement</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi culpa eligendi vel
+                                quaerat laborum aperiam, harum beatae perspiciatis minus totam iste, tempora nobis?
+                                Ipsam pariatur in omnis minus rem. Lorem ipsum, dolor sit amet consectetur adipisicing
+                                elit. Ipsa rerum voluptate hic, voluptates dicta eligendi dolorum provident suscipit
+                                quas ratione repellat eveniet qui perferendis quidem explicabo soluta est aut mollitia.
+                            </p>
+                            <code>
+                                public Timestamp getCurrentTime() {
+                                Date date = new Date();
+                                return Timestamp(date.getTime());
+                                }
+                            </code>
+                        </article>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="pills-denied" role="tabpanel" aria-labelledby="pills-denied-tab">
-                    <article class="p-5 border rounded shadow">
-                        <h1>denied</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi culpa eligendi vel
-                            quaerat laborum aperiam, harum beatae perspiciatis minus totam iste, tempora nobis? Ipsam
-                            pariatur in omnis minus rem. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa
-                            rerum voluptate hic, voluptates dicta eligendi dolorum provident suscipit quas ratione
-                            repellat eveniet qui perferendis quidem explicabo soluta est aut mollitia.</p>
-                    </article>
+                    <div class="reimbursement mb-5">
+                        <h3 class="h3 mb-3 text-center">Denied Reimbursements</h3>
+                        <article class="p-5 border rounded shadow">
+                            <p>reimbursement</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi culpa eligendi vel
+                                quaerat laborum aperiam, harum beatae perspiciatis minus totam iste, tempora nobis?
+                                Ipsam pariatur in omnis minus rem. Lorem ipsum, dolor sit amet consectetur adipisicing
+                                elit. Ipsa rerum voluptate hic, voluptates dicta eligendi dolorum provident suscipit
+                                quas ratione repellat eveniet qui perferendis quidem explicabo soluta est aut mollitia.
+                            </p>
+                            <code>
+                                public Timestamp getCurrentTime() {
+                                Date date = new Date();
+                                return Timestamp(date.getTime());
+                                }
+                            </code>
+                        </article>
+                    </div>
                 </div>
             </section>
         </div>

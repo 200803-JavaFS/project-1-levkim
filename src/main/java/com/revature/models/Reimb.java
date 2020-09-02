@@ -1,6 +1,6 @@
 package com.revature.models;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="ers_reimbursement")
@@ -25,11 +28,13 @@ public class Reimb {
 	@Column(name="reimb_amount", nullable=false)
 	private double amt;
 	
+	@CreationTimestamp
 	@Column(name="reimb_submitted", nullable=false)
-	private Timestamp submitted;
+	private LocalDateTime submitted;
 	
+	@UpdateTimestamp
 	@Column(name="reimb_resolved")
-	private Timestamp resolved;
+	private LocalDateTime resolved;
 	
 	@Column(name="reimb_description")
 	private String description;
@@ -58,7 +63,7 @@ public class Reimb {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reimb(double amt, Timestamp submitted, User author, ReimbStatus status, ReimbType type) {
+	public Reimb(double amt, LocalDateTime submitted, User author, ReimbStatus status, ReimbType type) {
 		super();
 		this.amt = amt;
 		this.submitted = submitted;
@@ -67,7 +72,7 @@ public class Reimb {
 		this.type = type;
 	}
 	
-	public Reimb(double amt, Timestamp submitted, String description, String receipt, User author, ReimbStatus status,
+	public Reimb(double amt, LocalDateTime submitted, String description, String receipt, User author, ReimbStatus status,
 			ReimbType type) {
 		super();
 		this.amt = amt;
@@ -79,7 +84,7 @@ public class Reimb {
 		this.type = type;
 	}
 
-	public Reimb(double amt, Timestamp submitted, Timestamp resolved, String description, String receipt, User author,
+	public Reimb(double amt, LocalDateTime submitted, LocalDateTime resolved, String description, String receipt, User author,
 			User resolver, ReimbStatus status, ReimbType type) {
 		super();
 		this.amt = amt;
@@ -93,7 +98,7 @@ public class Reimb {
 		this.type = type;
 	}
 
-	public Reimb(int id, double amt, Timestamp submitted, Timestamp resolved, String description, String receipt,
+	public Reimb(int id, double amt, LocalDateTime submitted, LocalDateTime resolved, String description, String receipt,
 			User author, User resolver, ReimbStatus status, ReimbType type) {
 		super();
 		this.id = id;
@@ -124,19 +129,19 @@ public class Reimb {
 		this.amt = amt;
 	}
 
-	public Timestamp getSubmitted() {
+	public LocalDateTime getSubmitted() {
 		return submitted;
 	}
 	
-	public void setSubmitted(Timestamp submitted) {
+	public void setSubmitted(LocalDateTime submitted) {
 		this.submitted = submitted;
 	}
 	
-	public Timestamp getResolved() {
+	public LocalDateTime getResolved() {
 		return resolved;
 	}
 	
-	public void setResolved(Timestamp resolved) {
+	public void setResolved(LocalDateTime resolved) {
 		this.resolved = resolved;
 	}
 	

@@ -1,13 +1,13 @@
 package com.revature.models;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class ReimbDTO {
 
 	public int id;
 	public double amt;
-	public Timestamp submitted;
-	public Timestamp resolved;
+	public LocalDateTime submitted;
+	public LocalDateTime resolved;
 	public String description;
 	public String receipt;
 	public int author;
@@ -20,7 +20,7 @@ public class ReimbDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ReimbDTO(double amt, Timestamp submitted, int author, int status, int type) {
+	public ReimbDTO(double amt, LocalDateTime submitted, int author, int status, int type) {
 		super();
 		this.amt = amt;
 		this.submitted = submitted;
@@ -29,7 +29,7 @@ public class ReimbDTO {
 		this.type = type;
 	}
 
-	public ReimbDTO(double amt, Timestamp submitted, String description, String receipt, int author, int status,
+	public ReimbDTO(double amt, LocalDateTime submitted, String description, String receipt, int author, int status,
 			int type) {
 		super();
 		this.amt = amt;
@@ -41,7 +41,7 @@ public class ReimbDTO {
 		this.type = type;
 	}
 
-	public ReimbDTO(double amt, Timestamp submitted, Timestamp resolved, String description, String receipt, int author,
+	public ReimbDTO(double amt, LocalDateTime submitted, LocalDateTime resolved, String description, String receipt, int author,
 			int resolver, int status, int type) {
 		super();
 		this.amt = amt;
@@ -55,7 +55,7 @@ public class ReimbDTO {
 		this.type = type;
 	}
 	
-	public ReimbDTO(int id, double amt, Timestamp submitted, Timestamp resolved, String description, String receipt,
+	public ReimbDTO(int id, double amt, LocalDateTime submitted, LocalDateTime resolved, String description, String receipt,
 			int author, int resolver, int status, int type) {
 		super();
 		this.id = id;
@@ -86,19 +86,19 @@ public class ReimbDTO {
 		this.amt = amt;
 	}
 
-	public Timestamp getSubmitted() {
+	public LocalDateTime getSubmitted() {
 		return submitted;
 	}
 
-	public void setSubmitted(Timestamp submitted) {
+	public void setSubmitted(LocalDateTime submitted) {
 		this.submitted = submitted;
 	}
 
-	public Timestamp getResolved() {
+	public LocalDateTime getResolved() {
 		return resolved;
 	}
 
-	public void setResolved(Timestamp resolved) {
+	public void setResolved(LocalDateTime resolved) {
 		this.resolved = resolved;
 	}
 

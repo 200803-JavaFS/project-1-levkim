@@ -1,22 +1,32 @@
 package com.revature;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+import com.revature.daos.ReimbDAO;
+import com.revature.daos.ReimbDAOImpl;
 import com.revature.daos.UserDAO;
 import com.revature.daos.UserDAOImpl;
+import com.revature.models.Reimb;
 import com.revature.models.User;
 
 public class Application {
 	
 	public static UserDAO udao = new UserDAOImpl();
+	public static ReimbDAO rdao = new ReimbDAOImpl();
 	
 	public static void main(String[] args) {
 		
 		insert();
 		List<User> users = udao.findAll();
+		List<Reimb> reimbs = rdao.findAll();
 		
 		for (User u : users) {
 			System.out.println(u);
+		}
+		
+		for (Reimb r : reimbs) {
+			System.out.println(r);
 		}
 		
 	}
@@ -43,6 +53,22 @@ public class Application {
 		udao.add(u1);
 		udao.add(u2);
 		udao.add(u3);
+		
+		LocalDateTime t1 = LocalDateTime.now();
+		Reimb r1 = new Reimb(20.00, t1, u1, rdao.findStatusId(1), rdao.findTypeId(2));
+		
+		LocalDateTime t2 = LocalDateTime.now();
+		Reimb r2 = new Reimb(50.00, t2, u2, rdao.findStatusId(3), rdao.findTypeId(4));
+		
+		LocalDateTime t3 = LocalDateTime.now();
+		Reimb r3 = new Reimb(50.00, t3, u3, rdao.findStatusId(2), rdao.findTypeId(1));
+		
+		LocalDateTime t4 = LocalDateTime.now();
+		Reimb r4 = new Reimb(50.00, t4, u3, rdao.findStatusId(1), rdao.findTypeId(3));
+		
+		rdao.add(r1);
+		rdao.add(r2);
+		rdao.add(r3);
+		rdao.add(r4);
 	}
-
 }

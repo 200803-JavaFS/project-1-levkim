@@ -252,10 +252,10 @@ public class Reimb {
 			    + "   Resolved On: " + resolved + "\n"
 			    + "   Description: " + description + "\n"
 			    + "   Receipt: " + receipt + "\n"
-			    + "   Author: " + author + "\n"
-			    + "   Resolver: " + resolver + "\n"
-			    + "   Status: " + status + "\n"
-			    + "   Type: " + type;
+			    + "   Author: " + author.getFirst_name() + " " + author.getLast_name() + "\n"
+			    + "   Resolver: " + resolver.getFirst_name() + " " + resolver.getLast_name() + "\n"
+			    + "   Status: " + status.getStatus() + "\n"
+			    + "   Type: " + type.getType();
 	}
 
 }

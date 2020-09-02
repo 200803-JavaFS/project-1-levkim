@@ -40,7 +40,7 @@ public class Reimb {
 	private String description;
 	
 	@Column(name="reimb_receipt")
-	private String receipt;
+	private byte[] receipt;
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="reimb_author", referencedColumnName="ers_users_id", nullable=false)
@@ -71,21 +71,9 @@ public class Reimb {
 		this.status = status;
 		this.type = type;
 	}
-	
-	public Reimb(double amt, LocalDateTime submitted, String description, String receipt, User author, ReimbStatus status,
-			ReimbType type) {
-		super();
-		this.amt = amt;
-		this.submitted = submitted;
-		this.description = description;
-		this.receipt = receipt;
-		this.author = author;
-		this.status = status;
-		this.type = type;
-	}
 
-	public Reimb(double amt, LocalDateTime submitted, LocalDateTime resolved, String description, String receipt, User author,
-			User resolver, ReimbStatus status, ReimbType type) {
+	public Reimb(double amt, LocalDateTime submitted, LocalDateTime resolved, String description, byte[] receipt,
+			User author, User resolver, ReimbStatus status, ReimbType type) {
 		super();
 		this.amt = amt;
 		this.submitted = submitted;
@@ -98,8 +86,8 @@ public class Reimb {
 		this.type = type;
 	}
 
-	public Reimb(int id, double amt, LocalDateTime submitted, LocalDateTime resolved, String description, String receipt,
-			User author, User resolver, ReimbStatus status, ReimbType type) {
+	public Reimb(int id, double amt, LocalDateTime submitted, LocalDateTime resolved, String description,
+			byte[] receipt, User author, User resolver, ReimbStatus status, ReimbType type) {
 		super();
 		this.id = id;
 		this.amt = amt;
@@ -153,14 +141,14 @@ public class Reimb {
 		this.description = description;
 	}
 	
-	public String getReceipt() {
+	public byte[] getReceipt() {
 		return receipt;
 	}
-	
-	public void setReceipt(String receipt) {
+
+	public void setReceipt(byte[] receipt) {
 		this.receipt = receipt;
 	}
-	
+
 	public User getAuthor() {
 		return author;
 	}

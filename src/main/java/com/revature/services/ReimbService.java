@@ -38,11 +38,11 @@ public class ReimbService {
 		ReimbStatus status = dao.findStatusId(rd.status);
 		ReimbType type = dao.findTypeId(rd.type);
 		
-		if (rd.description == "" || rd.receipt == "") {
+		if (rd.description == "" || rd.receipt == null) {
 			Reimb r = new Reimb(rd.amt, rd.submitted, u, status, type);
 			return dao.add(r);
 		} else {
-			Reimb r = new Reimb(rd.amt, rd.submitted, rd.description, rd.receipt, u, status, type);
+			Reimb r = new Reimb(0, rd.amt, rd.submitted, null, rd.description, rd.receipt, u, null, status, type);
 			return dao.add(r);
 		}
 	}

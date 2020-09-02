@@ -9,7 +9,7 @@ public class ReimbDTO {
 	public LocalDateTime submitted;
 	public LocalDateTime resolved;
 	public String description;
-	public String receipt;
+	public byte[] receipt;
 	public int author;
 	public int resolver;
 	public int status;
@@ -28,21 +28,9 @@ public class ReimbDTO {
 		this.status = status;
 		this.type = type;
 	}
-
-	public ReimbDTO(double amt, LocalDateTime submitted, String description, String receipt, int author, int status,
-			int type) {
-		super();
-		this.amt = amt;
-		this.submitted = submitted;
-		this.description = description;
-		this.receipt = receipt;
-		this.author = author;
-		this.status = status;
-		this.type = type;
-	}
-
-	public ReimbDTO(double amt, LocalDateTime submitted, LocalDateTime resolved, String description, String receipt, int author,
-			int resolver, int status, int type) {
+	
+	public ReimbDTO(double amt, LocalDateTime submitted, LocalDateTime resolved, String description, byte[] receipt,
+			int author, int resolver, int status, int type) {
 		super();
 		this.amt = amt;
 		this.submitted = submitted;
@@ -54,9 +42,9 @@ public class ReimbDTO {
 		this.status = status;
 		this.type = type;
 	}
-	
-	public ReimbDTO(int id, double amt, LocalDateTime submitted, LocalDateTime resolved, String description, String receipt,
-			int author, int resolver, int status, int type) {
+
+	public ReimbDTO(int id, double amt, LocalDateTime submitted, LocalDateTime resolved, String description,
+			byte[] receipt, int author, int resolver, int status, int type) {
 		super();
 		this.id = id;
 		this.amt = amt;
@@ -69,7 +57,7 @@ public class ReimbDTO {
 		this.status = status;
 		this.type = type;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -110,11 +98,11 @@ public class ReimbDTO {
 		this.description = description;
 	}
 
-	public String getReceipt() {
+	public byte[] getReceipt() {
 		return receipt;
 	}
 
-	public void setReceipt(String receipt) {
+	public void setReceipt(byte[] receipt) {
 		this.receipt = receipt;
 	}
 

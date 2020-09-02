@@ -34,9 +34,17 @@ public class ReimbService {
 	}
 	
 	public boolean add(ReimbDTO rd) {
-		User u = udao.findByName(rd.author);
-		Reimb r = new Reimb(rd.amt, rd.submitted, u, rd.status, rd.type);
-		return dao.add(r);
+		User u = udao.findById(rd.author);
+		ReimbStatus status = dao.findStatusId(rd.status);
+		ReimbType type = dao.findTypeId(rd.type);
+		
+		if (rd.description == "" || rd.receipt == "") {
+			Reimb r = new Reimb(rd.amt, rd.submitted, u, status, type);
+			return dao.add(r);
+		} else {
+			Reimb r = new Reimb(rd.amt, rd.submitted, rd.description, rd.receipt, u, status, type);
+			return dao.add(r);
+		}
 	}
 	
 	public boolean update(Reimb r) {

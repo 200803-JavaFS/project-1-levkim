@@ -10,17 +10,17 @@ public class ReimbDTO {
 	public Timestamp resolved;
 	public String description;
 	public String receipt;
-	public String author;
-	public String resolver;
-	public ReimbStatus status;
-	public ReimbType type;
+	public int author;
+	public int resolver;
+	public int status;
+	public int type;
 	
 	public ReimbDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public ReimbDTO(double amt, Timestamp submitted, String author, ReimbStatus status, ReimbType type) {
+
+	public ReimbDTO(double amt, Timestamp submitted, int author, int status, int type) {
 		super();
 		this.amt = amt;
 		this.submitted = submitted;
@@ -29,8 +29,20 @@ public class ReimbDTO {
 		this.type = type;
 	}
 
-	public ReimbDTO(double amt, Timestamp submitted, Timestamp resolved, String description, String receipt,
-			String author, String resolver, ReimbStatus status, ReimbType type) {
+	public ReimbDTO(double amt, Timestamp submitted, String description, String receipt, int author, int status,
+			int type) {
+		super();
+		this.amt = amt;
+		this.submitted = submitted;
+		this.description = description;
+		this.receipt = receipt;
+		this.author = author;
+		this.status = status;
+		this.type = type;
+	}
+
+	public ReimbDTO(double amt, Timestamp submitted, Timestamp resolved, String description, String receipt, int author,
+			int resolver, int status, int type) {
 		super();
 		this.amt = amt;
 		this.submitted = submitted;
@@ -42,9 +54,9 @@ public class ReimbDTO {
 		this.status = status;
 		this.type = type;
 	}
-
+	
 	public ReimbDTO(int id, double amt, Timestamp submitted, Timestamp resolved, String description, String receipt,
-			String author, String resolver, ReimbStatus status, ReimbType type) {
+			int author, int resolver, int status, int type) {
 		super();
 		this.id = id;
 		this.amt = amt;
@@ -57,6 +69,86 @@ public class ReimbDTO {
 		this.status = status;
 		this.type = type;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public double getAmt() {
+		return amt;
+	}
+
+	public void setAmt(double amt) {
+		this.amt = amt;
+	}
+
+	public Timestamp getSubmitted() {
+		return submitted;
+	}
+
+	public void setSubmitted(Timestamp submitted) {
+		this.submitted = submitted;
+	}
+
+	public Timestamp getResolved() {
+		return resolved;
+	}
+
+	public void setResolved(Timestamp resolved) {
+		this.resolved = resolved;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getReceipt() {
+		return receipt;
+	}
+
+	public void setReceipt(String receipt) {
+		this.receipt = receipt;
+	}
+
+	public int getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(int author) {
+		this.author = author;
+	}
+
+	public int getResolver() {
+		return resolver;
+	}
+
+	public void setResolver(int resolver) {
+		this.resolver = resolver;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
 
 	@Override
 	public int hashCode() {
@@ -65,15 +157,15 @@ public class ReimbDTO {
 		long temp;
 		temp = Double.doubleToLongBits(amt);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((author == null) ? 0 : author.hashCode());
+		result = prime * result + author;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((receipt == null) ? 0 : receipt.hashCode());
 		result = prime * result + ((resolved == null) ? 0 : resolved.hashCode());
-		result = prime * result + ((resolver == null) ? 0 : resolver.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + resolver;
+		result = prime * result + status;
 		result = prime * result + ((submitted == null) ? 0 : submitted.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result + type;
 		return result;
 	}
 
@@ -88,10 +180,7 @@ public class ReimbDTO {
 		ReimbDTO other = (ReimbDTO) obj;
 		if (Double.doubleToLongBits(amt) != Double.doubleToLongBits(other.amt))
 			return false;
-		if (author == null) {
-			if (other.author != null)
-				return false;
-		} else if (!author.equals(other.author))
+		if (author != other.author)
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -110,25 +199,16 @@ public class ReimbDTO {
 				return false;
 		} else if (!resolved.equals(other.resolved))
 			return false;
-		if (resolver == null) {
-			if (other.resolver != null)
-				return false;
-		} else if (!resolver.equals(other.resolver))
+		if (resolver != other.resolver)
 			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
+		if (status != other.status)
 			return false;
 		if (submitted == null) {
 			if (other.submitted != null)
 				return false;
 		} else if (!submitted.equals(other.submitted))
 			return false;
-		if (type == null) {
-			if (other.type != null)
-				return false;
-		} else if (!type.equals(other.type))
+		if (type != other.type)
 			return false;
 		return true;
 	}

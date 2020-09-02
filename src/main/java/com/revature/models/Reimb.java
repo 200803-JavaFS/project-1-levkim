@@ -66,6 +66,18 @@ public class Reimb {
 		this.status = status;
 		this.type = type;
 	}
+	
+	public Reimb(double amt, Timestamp submitted, String description, String receipt, User author, ReimbStatus status,
+			ReimbType type) {
+		super();
+		this.amt = amt;
+		this.submitted = submitted;
+		this.description = description;
+		this.receipt = receipt;
+		this.author = author;
+		this.status = status;
+		this.type = type;
+	}
 
 	public Reimb(double amt, Timestamp submitted, Timestamp resolved, String description, String receipt, User author,
 			User resolver, ReimbStatus status, ReimbType type) {

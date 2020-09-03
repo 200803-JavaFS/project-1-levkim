@@ -16,7 +16,7 @@ async function loginFunc() {
         method: 'POST',
         body: JSON.stringify(user),
         credentials: "include"
-    });
+    }); // don't forget resp.status for checking response status!!!!!!!
 
     if (resp.status === 200) {
         console.log(resp);

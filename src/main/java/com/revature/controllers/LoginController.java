@@ -60,7 +60,7 @@ public class LoginController {
 			res.getWriter().print(l.username + " successfully logged out!");
 		} else {
 			res.setStatus(400);
-			res.getWriter().println("You must be logged in to log out. How did you get here?");
+			res.getWriter().println("You must be logged in to log out. How did you even get here???");
 		}
 	}
 

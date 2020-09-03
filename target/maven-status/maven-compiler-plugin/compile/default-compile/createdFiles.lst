@@ -3,10 +3,13 @@ com\revature\models\UserType.class
 com\revature\models\UType.class
 com\revature\util\ConnectUtil.class
 com\revature\daos\UserDAOImpl.class
+com\revature\models\ReimbDTO.class
 com\revature\daos\UserDAO.class
 com\revature\services\UserService.class
 com\revature\Application.class
+com\revature\controllers\filters\CorsFilter.class
 com\revature\models\LoginDTO.class
+com\revature\controllers\ReimbController.class
 com\revature\models\RType.class
 com\revature\models\User.class
 com\revature\models\ReimbType.class
@@ -14,4 +17,7 @@ com\revature\daos\ReimbDAO.class
 com\revature\services\ReimbService.class
 com\revature\models\Reimb.class
 com\revature\models\ReimbStatus.class
+com\revature\controllers\MasterServlet.class
+com\revature\services\LoginService.class
+com\revature\controllers\LoginController.class
 com\revature\daos\ReimbDAOImpl.class

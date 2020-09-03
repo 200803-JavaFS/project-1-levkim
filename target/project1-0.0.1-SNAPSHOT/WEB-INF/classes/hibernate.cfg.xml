@@ -11,8 +11,12 @@
 		<property name="hibernate.connection.url">jdbc:postgresql://demosdb.cnhivgivm0u1.us-east-1.rds.amazonaws.com:5432/project1</property>
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 		
 		<mapping class="com.revature.models.User" />
+		<mapping class="com.revature.models.UserType" />
 		<mapping class="com.revature.models.Reimb" />
+		<mapping class="com.revature.models.ReimbType" />
+		<mapping class="com.revature.models.ReimbStatus" />
 	</session-factory>
 </hibernate-configuration>

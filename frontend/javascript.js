@@ -4,21 +4,27 @@ document.getElementById("login-btn").addEventListener("click", loginFunc);
 
 async function loginFunc() {
 
-    let name = document.getElementById("username").value;
-    let pass = document.getElementById("password").value;
+    let usern = document.getElementById("username").value;
+    let userp = document.getElementById("password").value;
 
     let user = {
-        username: name,
-        password: pass
+        username: usern,
+        password: userp
     };
 
     let resp = await fetch(url + "login", {
+        credentials: "include",
         method: 'POST',
+<<<<<<< HEAD
         body: JSON.stringify(user),
         credentials: "include"
     }); // don't forget resp.status for checking response status!!!!!!!
+=======
+        body: JSON.stringify(user)
+    });
+>>>>>>> parent of bba588d... FIXED CONNECTION ISSUEgit add -A!
 
-    if (resp.status === 200) {
+    if (resp === 200) {
         console.log(resp);
         document.getElementById("login-row").innerText = "You have successfully logged in!";
         let nav = document.getElementById("pills-all-tab");

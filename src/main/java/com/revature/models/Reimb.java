@@ -253,7 +253,7 @@ public class Reimb {
 			    + "   Description: " + description + "\n"
 			    + "   Receipt: " + receipt + "\n"
 			    + "   Author: " + author.getFirst_name() + " " + author.getLast_name() + "\n"
-			    + "   Resolver: " + resolver.getFirst_name() + " " + resolver.getLast_name() + "\n"
+			    + "   Resolver: " + resolver + "\n"
 			    + "   Status: " + status.getStatus() + "\n"
 			    + "   Type: " + type.getType();
 	}

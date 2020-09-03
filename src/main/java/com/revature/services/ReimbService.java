@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.revature.daos.ReimbDAO;
@@ -38,17 +39,35 @@ public class ReimbService {
 		ReimbStatus status = dao.findStatusId(rd.status);
 		ReimbType type = dao.findTypeId(rd.type);
 		
-		if (rd.description == "" || rd.receipt == null) {
-			Reimb r = new Reimb(rd.amt, rd.submitted, u, status, type);
+		if (rd.receipt == null) {
+			Reimb r = new Reimb(rd.amt, rd.submitted, null, rd.description, null, u, null, status, type);
 			return dao.add(r);
 		} else {
-			Reimb r = new Reimb(0, rd.amt, rd.submitted, null, rd.description, rd.receipt, u, null, status, type);
+			Reimb r = new Reimb(rd.amt, rd.submitted, null, rd.description, rd.receipt, u, null, status, type);
 			return dao.add(r);
 		}
 	}
 	
-	public boolean update(Reimb r) {
-		return dao.update(r);
+	public boolean update(ReimbDTO rd) {
+		Reimb r = dao.findById(rd.id);
+		int statusId = rd.status;
+		User u = udao.findById(rd.resolver);
+		
+		try {
+			if (r.getResolver().equals(null)) {
+				r.setStatus(dao.findStatusId(statusId));
+				r.setResolver(u);
+				r.setResolved(LocalDateTime.now());
+				return dao.update(r);
+			} else {
+				System.out.println("This reimbursement is already resolved!");
+			}
+		} catch (Exception e) {
+			System.out.println("Error occurred with updating reimbursements!");
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 	
 	public boolean delete(int id) {

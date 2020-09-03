@@ -29,9 +29,6 @@ public class MasterServlet extends HttpServlet {
 		String[] portions = URI.split("/");
 		
 		System.out.println(Arrays.toString(portions));
-		if (portions.length == 0) {
-			req.getRequestDispatcher("index.html").forward(req, res);
-		}
 		
 		try {
 			switch (portions[0]) {

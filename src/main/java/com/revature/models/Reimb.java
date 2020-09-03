@@ -63,11 +63,14 @@ public class Reimb {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reimb(double amt, LocalDateTime submitted, User author, ReimbStatus status, ReimbType type) {
+	public Reimb(double amt, LocalDateTime submitted, LocalDateTime resolved, User author, User resolver,
+			ReimbStatus status, ReimbType type) {
 		super();
 		this.amt = amt;
 		this.submitted = submitted;
+		this.resolved = resolved;
 		this.author = author;
+		this.resolver = resolver;
 		this.status = status;
 		this.type = type;
 	}

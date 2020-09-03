@@ -1,4 +1,4 @@
-const url = "http://localhost:8080/project1";
+const url = "http://localhost:8080/project1/";
 
 document.getElementById("login-btn").addEventListener("click", loginFunc);
 
@@ -21,8 +21,6 @@ async function loginFunc() {
     if (resp.status === 200) {
         console.log(resp);
         document.getElementById("login-row").innerText = "You have successfully logged in!";
-        let nav = document.getElementById("pills-all-tab");
-        nav.onclick = findAllFunc;
     } else {
         document.getElementById("login-row").innerText = "Login failed.";
     }

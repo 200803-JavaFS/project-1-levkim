@@ -1,4 +1,4 @@
-const url = "http://localhost:8080/project1/";
+const url = "http://ec2-52-72-75-128.compute-1.amazonaws.com:8085/project1";
 
 document.getElementById("login-btn").addEventListener("click", loginFunc);
 

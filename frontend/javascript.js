@@ -16,10 +16,13 @@ async function loginFunc() {
         credentials: "include",
         method: 'POST',
 <<<<<<< HEAD
+<<<<<<< HEAD
         body: JSON.stringify(user),
         credentials: "include"
     }); // don't forget resp.status for checking response status!!!!!!!
 =======
+=======
+>>>>>>> parent of bba588d... FIXED CONNECTION ISSUEgit add -A!
         body: JSON.stringify(user)
     });
 >>>>>>> parent of bba588d... FIXED CONNECTION ISSUEgit add -A!

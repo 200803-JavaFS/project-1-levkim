@@ -1,33 +1,24 @@
-const url = "http://ec2-52-72-75-128.compute-1.amazonaws.com:8085/project1";
+const url = "http://localhost:8080/project1";
 
 document.getElementById("login-btn").addEventListener("click", loginFunc);
 
 async function loginFunc() {
 
-    let usern = document.getElementById("username").value;
-    let userp = document.getElementById("password").value;
+    let name = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
 
     let user = {
-        username: usern,
-        password: userp
+        username: name,
+        password: pass
     };
 
     let resp = await fetch(url + "login", {
-        credentials: "include",
         method: 'POST',
-<<<<<<< HEAD
-<<<<<<< HEAD
         body: JSON.stringify(user),
         credentials: "include"
     }); // don't forget resp.status for checking response status!!!!!!!
-=======
-=======
->>>>>>> parent of bba588d... FIXED CONNECTION ISSUEgit add -A!
-        body: JSON.stringify(user)
-    });
->>>>>>> parent of bba588d... FIXED CONNECTION ISSUEgit add -A!
 
-    if (resp === 200) {
+    if (resp.status === 200) {
         console.log(resp);
         document.getElementById("login-row").innerText = "You have successfully logged in!";
         let nav = document.getElementById("pills-all-tab");

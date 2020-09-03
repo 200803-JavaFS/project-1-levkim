@@ -16,11 +16,15 @@ public class LoginService {
 			User u = dao.findByName(username);
 			
 			if (u != null) {
-				StringBuilder sb = new StringBuilder();
-				sb.append(password.hashCode());
-				String hashed = new String(sb);
+//				StringBuilder sb = new StringBuilder();
+//				sb.append(password.hashCode());
+//				String hashed = new String(sb);
 				
-				if (u.getPassword().equals(hashed) && dao.checkCreds(username, hashed)) {
+				System.out.println(u.getPassword());
+				System.out.println(password);
+				
+				if (u.getPassword().equals(password)) {
+					System.out.println("Login successful!");
 					return true;
 				} else {
 					System.out.println("Incorrect credentials entered.");

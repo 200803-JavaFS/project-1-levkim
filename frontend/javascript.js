@@ -4,21 +4,21 @@ document.getElementById("login-btn").addEventListener("click", loginFunc);
 
 async function loginFunc() {
 
-    let usern = document.getElementById("username").value;
-    let userp = document.getElementById("password").value;
+    let name = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
 
     let user = {
-        username: usern,
-        password: userp
+        username: name,
+        password: pass
     };
 
     let resp = await fetch(url + "login", {
-        credentials: "include",
         method: 'POST',
-        body: JSON.stringify(user)
+        body: JSON.stringify(user),
+        credentials: "include"
     });
 
-    if (resp === 200) {
+    if (resp.status === 200) {
         console.log(resp);
         document.getElementById("login-row").innerText = "You have successfully logged in!";
         let nav = document.getElementById("pills-all-tab");

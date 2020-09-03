@@ -30,6 +30,10 @@ public class MasterServlet extends HttpServlet {
 		
 		System.out.println(Arrays.toString(portions));
 		
+		if (portions.length == 0) {
+			req.getRequestDispatcher("index.html").forward(req, res);
+		}
+		
 		try {
 			switch (portions[0]) {
 			case "reimbursement":

@@ -34,30 +34,6 @@ public class ReimbController {
 		res.setStatus(200);
 	}
 	
-	public void updateReimb(HttpServletRequest req, HttpServletResponse res) throws IOException {
-		BufferedReader reader = req.getReader();
-		StringBuilder s = new StringBuilder();
-		String line = reader.readLine();
-		
-		while (line != null) {
-			s.append(line);
-			line = reader.readLine();
-		}
-		
-		String body = new String(s);
-		System.out.println(body);
-		
-		ReimbDTO r = om.readValue(body, ReimbDTO.class);
-		System.out.println(r);
-		
-		if (rs.update(r)) {
-			res.setStatus(201);
-			res.getWriter().println("Reimbursement successfully updated!");
-		} else {
-			res.setStatus(403);
-		}
-	}
-	
 	public void addReimb(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		BufferedReader reader = req.getReader();
 		StringBuilder s = new StringBuilder();
@@ -77,6 +53,30 @@ public class ReimbController {
 		if (rs.add(r)) {
 			res.setStatus(201);
 			res.getWriter().println("Reimbursement successfully created!");
+		} else {
+			res.setStatus(403);
+		}
+	}
+	
+	public void updateReimb(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		BufferedReader reader = req.getReader();
+		StringBuilder s = new StringBuilder();
+		String line = reader.readLine();
+		
+		while (line != null) {
+			s.append(line);
+			line = reader.readLine();
+		}
+		
+		String body = new String(s);
+		System.out.println(body);
+		
+		ReimbDTO r = om.readValue(body, ReimbDTO.class);
+		System.out.println(r);
+		
+		if (rs.update(r)) {
+			res.setStatus(201);
+			res.getWriter().println("Reimbursement successfully updated!");
 		} else {
 			res.setStatus(403);
 		}

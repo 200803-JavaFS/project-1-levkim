@@ -3,6 +3,7 @@ package com.revature.controllers;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,7 +17,7 @@ public class LoginController {
 	private static LoginService ls = new LoginService();
 	private static ObjectMapper om = new ObjectMapper();
 	
-	public void login(HttpServletRequest req, HttpServletResponse res) throws IOException {
+	public void login(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		if (req.getMethod().equals("GET")) {
 			res.setStatus(403);
 			res.getWriter().println("You're not allowed to use query parameters to log in!");

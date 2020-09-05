@@ -50,12 +50,12 @@ public class ReimbService {
 	
 	public boolean update(ReimbDTO rd) {
 		Reimb r = dao.findById(rd.id);
-		int statusId = rd.status;
+		ReimbStatus status = dao.findStatusId(rd.status);
 		User u = udao.findById(rd.resolver);
 		
 		try {
 			if (r.getResolver().equals(null)) {
-				r.setStatus(dao.findStatusId(statusId));
+				r.setStatus(status);
 				r.setResolver(u);
 				r.setResolved(LocalDateTime.now());
 				return dao.update(r);

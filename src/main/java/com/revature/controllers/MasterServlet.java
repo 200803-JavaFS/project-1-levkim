@@ -35,14 +35,18 @@ public class MasterServlet extends HttpServlet {
 			case "reimbursement":
 				if (req.getSession(false) != null && (boolean) req.getSession().getAttribute("loggedin")) {
 					if (req.getMethod().equals("GET")) {
-						if (portions.length == 2) {
+						if (portions.length == 2) { 
 							int id = Integer.parseInt(portions[1]);
 							rc.getReimb(res, id);
 						} else if (portions.length == 1) {
 							rc.getAllReimb(res);
 						}
 					} else if (req.getMethod().equals("POST")) {
-						rc.addReimb(req, res);
+						if (req.getAttribute("role").equals(1)) {
+							rc.addReimb(req, res);							
+						} else if (req.getAttribute("role").equals(2)) {
+							rc.updateReimb(req, res);
+						}
 					}
 				} else {
 					res.setStatus(403);

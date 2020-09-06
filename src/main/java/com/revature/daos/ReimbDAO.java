@@ -14,8 +14,8 @@ public interface ReimbDAO {
 	public Reimb findById(int id);
 	public ReimbType findTypeId(int id);
 	public ReimbStatus findStatusId(int id);
-	public List<Reimb> findByType(ReimbType type);
-	public List<Reimb> findByStatus(ReimbStatus status);
+	public List<Reimb> findByType(int id);
+	public List<Reimb> findByStatus(int id);
 	public List<Reimb> findAll();
 
 }

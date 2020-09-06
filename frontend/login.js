@@ -3,7 +3,6 @@ const url = "http://localhost:8080/project1/";
 document.getElementById("login-btn").addEventListener("click", loginFunc);
 
 async function loginFunc() {
-
     let name = document.getElementById("username").value;
     let pass = document.getElementById("password").value;
 
@@ -21,7 +20,7 @@ async function loginFunc() {
     if (resp.status === 200) {
         console.log(resp);
         document.getElementById("login-row").innerText = "You have successfully logged in!";
-        window.location.href = "dashboard.html";
+        window.location.replace = "dashboard.html";
     } else {
         document.getElementById("login-row").innerText = "Login failed.";
     }

@@ -38,13 +38,19 @@ public class MasterServlet extends HttpServlet {
 						if (portions.length == 2) { 
 							int id = Integer.parseInt(portions[1]);
 							rc.getReimb(res, id);
+						} else if (portions.length == 3 && portions[1].equals("status")) {
+							int id = Integer.parseInt(portions[2]);
+							rc.getReimb(res, id);
+						} else if (portions.length == 3 && portions[1].equals("type")) {
+							int id = Integer.parseInt(portions[2]);
+							rc.getReimb(res, id);
 						} else if (portions.length == 1) {
 							rc.getAllReimb(res);
 						}
 					} else if (req.getMethod().equals("POST")) {
-						if (req.getAttribute("role").equals(1)) {
-							rc.addReimb(req, res);							
-						} else if (req.getAttribute("role").equals(2)) {
+						if (req.getAttribute("user").getClass().getField("role").equals(1)) {
+							rc.addReimb(req, res);
+						} else if (req.getAttribute("user").getClass().getField("role").equals(2)) {
 							rc.updateReimb(req, res);
 						}
 					}
@@ -61,6 +67,14 @@ public class MasterServlet extends HttpServlet {
 				break;
 			}
 		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			res.setStatus(400);
+		} catch (NoSuchFieldException e) {
+			System.out.println("This field does not exist within the class you are accessing!");
+			e.printStackTrace();
+			res.setStatus(400);
+		} catch (SecurityException e) {
+			System.out.println("Warning! Security breach!!");
 			e.printStackTrace();
 			res.setStatus(400);
 		}

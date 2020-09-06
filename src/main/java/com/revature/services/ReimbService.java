@@ -22,11 +22,11 @@ public class ReimbService {
 		return dao.findAll();
 	}
 	
-	public List<Reimb> findByStatus(ReimbStatus status) {
+	public List<Reimb> findByStatus(int status) {
 		return dao.findByStatus(status);
 	}
 	
-	public List<Reimb> findByType(ReimbType type) {
+	public List<Reimb> findByType(int type) {
 		return dao.findByType(type);
 	}
 	

@@ -16,6 +16,8 @@ public class LoginService {
 			User u = dao.findByName(username);
 			
 			if (u != null) {
+				l.role = u.getType().getId();
+				
 				StringBuilder sb = new StringBuilder();
 				sb.append(password.hashCode());
 				String hashed = new String(sb);

@@ -28,6 +28,18 @@ public class ReimbController {
 		}
 	}
 	
+	public void getReimbStatus(HttpServletResponse res, int id) throws IOException {
+		List<Reimb> reimbStat = rs.findByStatus(id);
+		res.getWriter().println(om.writeValueAsString(reimbStat));
+		res.setStatus(200);
+	}
+	
+	public void getReimbType(HttpServletResponse res, int id) throws IOException {
+		List<Reimb> reimbType = rs.findByType(id);
+		res.getWriter().println(om.writeValueAsString(reimbType));
+		res.setStatus(200);
+	}
+	
 	public void getAllReimb(HttpServletResponse res) throws IOException {
 		List<Reimb> all = rs.findAll();
 		res.getWriter().println(om.writeValueAsString(all));

@@ -59,16 +59,16 @@ public class ReimbDAOImpl implements ReimbDAO {
 	}
 
 	@Override
-	public List<Reimb> findByType(ReimbType type) {
+	public List<Reimb> findByType(int id) {
 		Session ses = ConnectUtil.getSession();
-		List<Reimb> list = ses.createQuery("FROM Reimb WHERE type = " + type, Reimb.class).list();
+		List<Reimb> list = ses.createQuery("FROM Reimb WHERE type = " + id, Reimb.class).list();
 		return list;
 	}
 
 	@Override
-	public List<Reimb> findByStatus(ReimbStatus status) {
+	public List<Reimb> findByStatus(int id) {
 		Session ses = ConnectUtil.getSession();
-		List<Reimb> list = ses.createQuery("FROM Reimb WHERE status = " + status, Reimb.class).list();
+		List<Reimb> list = ses.createQuery("FROM Reimb WHERE status = " + id, Reimb.class).list();
 		return list;
 	}
 

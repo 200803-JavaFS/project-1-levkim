@@ -9,21 +9,19 @@ public class LoginService {
 	
 	private static UserDAO dao = new UserDAOImpl();
 	
-	public boolean login(LoginDTO l) {
+	public User login(LoginDTO l) {
 		try {
 			String username = l.username;
 			String password = l.password;
 			User u = dao.findByName(username);
 			
 			if (u != null) {
-				l.role = u.getType().getId();
-				
 				StringBuilder sb = new StringBuilder();
 				sb.append(password.hashCode());
 				String hashed = new String(sb);
 				
 				if (u.getPassword().equals(hashed) && dao.checkCreds(username, hashed)) {
-					return true;
+					return u;
 				} else {
 					System.out.println("Incorrect credentials entered.");
 				}
@@ -33,8 +31,9 @@ public class LoginService {
 		} catch (NullPointerException e) {
 			System.out.println("Login failed.");
 			e.printStackTrace();
+			return null;
 		}
-		return false;
+		return null;
 	}
 
 }

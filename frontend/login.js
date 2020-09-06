@@ -17,11 +17,33 @@ async function loginFunc() {
         credentials: "include"
     }); // don't forget resp.status for checking response status!!!!!!!
 
+    console.log(resp.json);
+
     if (resp.status === 200) {
         console.log(resp);
         document.getElementById("login-row").innerText = "You have successfully logged in!";
-        window.location.replace = "dashboard.html";
+        redirect();
     } else {
         document.getElementById("login-row").innerText = "Login failed.";
+    }
+}
+
+async function redirect() {
+    let resp = await fetch(url + "success", {
+        method: "GET",
+        credentials: "include"
+    });
+    
+    let data = await resp.json();
+    let id = data.id;
+    sessionStorage.setItem("user", id);
+
+    if (data.type.id === 2) {
+        window.location.href = "dashboard.html";
+    } else if (data.type.id === 1) {
+        window.location.href = "manager.html";
+    } else {
+        console.log("Something went wrong with checking user type!");
+        window.location.href = "index.html";
     }
 }

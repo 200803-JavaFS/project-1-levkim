@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.revature.models.User;
 import com.revature.models.UserType;
@@ -14,9 +15,11 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean add(User u) {
 		Session ses = ConnectUtil.getSession();
+		Transaction tx = ses.beginTransaction();
 		
 		try {
 			ses.save(u);
+			tx.commit();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -28,9 +31,11 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean update(User u) {
 		Session ses = ConnectUtil.getSession();
+		Transaction tx = ses.beginTransaction();
 		
 		try {
 			ses.merge(u);
+			tx.commit();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -41,9 +46,11 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean delete(int id) {
 		Session ses = ConnectUtil.getSession();
+		Transaction tx = ses.beginTransaction();
 		
 		try {
 			ses.createQuery("DELETE FROM User WHERE id = " + id);
+			tx.commit();
 			return true;
 		} catch (HibernateException e) {
 			e.printStackTrace();

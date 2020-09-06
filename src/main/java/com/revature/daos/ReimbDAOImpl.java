@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.revature.models.Reimb;
 import com.revature.models.ReimbStatus;
@@ -15,9 +16,11 @@ public class ReimbDAOImpl implements ReimbDAO {
 	@Override
 	public boolean add(Reimb r) {
 		Session ses = ConnectUtil.getSession();
+		Transaction tx = ses.beginTransaction();
 		
 		try {
 			ses.save(r);
+			tx.commit();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -28,9 +31,11 @@ public class ReimbDAOImpl implements ReimbDAO {
 	@Override
 	public boolean update(Reimb r) {
 		Session ses = ConnectUtil.getSession();
+		Transaction tx = ses.beginTransaction();
 		
 		try {
 			ses.merge(r);
+			tx.commit();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -41,9 +46,11 @@ public class ReimbDAOImpl implements ReimbDAO {
 	@Override
 	public boolean delete(int id) {
 		Session ses = ConnectUtil.getSession();
+		Transaction tx = ses.beginTransaction();
 		
 		try {
 			ses.createQuery("DELETE FROM Reimb WHERE id = " + id);
+			tx.commit();
 			return true;
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -69,6 +76,13 @@ public class ReimbDAOImpl implements ReimbDAO {
 	public List<Reimb> findByStatus(int id) {
 		Session ses = ConnectUtil.getSession();
 		List<Reimb> list = ses.createQuery("FROM Reimb WHERE status = " + id, Reimb.class).list();
+		return list;
+	}
+	
+	@Override
+	public List<Reimb> findByUser(int id) {
+		Session ses = ConnectUtil.getSession();
+		List<Reimb> list = ses.createQuery("FROM Reimb WHERE author = " + id, Reimb.class).list();
 		return list;
 	}
 

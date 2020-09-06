@@ -30,6 +30,10 @@ public class ReimbService {
 		return dao.findByType(type);
 	}
 	
+	public List<Reimb> findByUser(int user) {
+		return dao.findByUser(user);
+	}
+	
 	public Reimb findById(int id) {
 		return dao.findById(id);
 	}

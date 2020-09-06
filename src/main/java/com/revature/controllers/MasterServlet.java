@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.models.UType;
+
 public class MasterServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -40,17 +42,21 @@ public class MasterServlet extends HttpServlet {
 							rc.getReimb(res, id);
 						} else if (portions.length == 3 && portions[1].equals("status")) {
 							int id = Integer.parseInt(portions[2]);
-							rc.getReimb(res, id);
+							rc.getReimbStatus(res, id);
 						} else if (portions.length == 3 && portions[1].equals("type")) {
 							int id = Integer.parseInt(portions[2]);
-							rc.getReimb(res, id);
+							rc.getReimbType(res, id);
 						} else if (portions.length == 1) {
+							if (lc.setUser(req, res).getType().equals(UType.EMPLOYEE)) {
+								int id = lc.setUser(req, res).getId();
+								rc.getReimbUser(req, res, id);
+							}
 							rc.getAllReimb(res);
 						}
 					} else if (req.getMethod().equals("POST")) {
-						if (req.getAttribute("user").getClass().getField("role").equals(1)) {
+						if (portions.length == 2 && portions[1].equals("add")) {
 							rc.addReimb(req, res);
-						} else if (req.getAttribute("user").getClass().getField("role").equals(2)) {
+						} else if (portions.length == 2 && portions[1].equals("update")) {
 							rc.updateReimb(req, res);
 						}
 					}
@@ -65,19 +71,14 @@ public class MasterServlet extends HttpServlet {
 			case "logout":
 				lc.logout(req, res);
 				break;
+			case "success":
+				lc.setUser(req, res);
+				break;
 			}
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 			res.setStatus(400);
-		} catch (NoSuchFieldException e) {
-			System.out.println("This field does not exist within the class you are accessing!");
-			e.printStackTrace();
-			res.setStatus(400);
-		} catch (SecurityException e) {
-			System.out.println("Warning! Security breach!!");
-			e.printStackTrace();
-			res.setStatus(400);
-		}
+		} 
 	}
 	
 	@Override

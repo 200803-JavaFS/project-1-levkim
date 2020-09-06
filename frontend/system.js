@@ -1,15 +1,19 @@
-async function findAllFunc() {
+const url = "http://localhost:8080/project1/";
 
+let user = sessionStorage.getItem("user");
+
+async function findAllFunc() {
     document.getElementById("pills-all").innerText = "";
 
-    let resp = await fetch(url + "reimbursement", {
-        credentials: 'include',
+    let resp = await fetch(url + "reimbursement" + "author" + user, {
+        method: 'GET',
+        credentials: 'include'
     });
 
     if (resp.status === 200) {
         let data = await resp.json();
-        for (let reimbursement of data) {
-            console.log(reimbursement);
+        for (let reimb of data) {
+            console.log(reimb);
             let row = document.createElement("section");
             row.className("reimbursement mb-5");
             let article = document.createElement("article");
@@ -20,32 +24,55 @@ async function findAllFunc() {
     }
 }
 
-async function AddFunc() {
+async function findStatus() {
+    let resp = await fetch(url + "reimbursement" + "status" + user, {
+        method: 'GET',
+        credentials: 'include'
+    });
 
-    let amt = document.getElementById("ramt").value;
-    let datee = document.getElementById("rdate").value;
-    let type = document.getElementById("rtype").value;
-    let statuss = document.getElementById("rstatus").value("PENDING");
+    if (resp.status === 200) {
+        let data = await resp.json();
+        let rstatus = data.status.id;
+        if (rstatus === 1) {
+            for (let reimb of data) {
+                console.log(reimb);
+                let row = document.createElement("section");
+                row.className("reimbursement mb-5");
+                let article = document.createElement("article");
+                article.className("p-5 border rounded shadow");
+                row.appendChild(article);
+                document.getElementById("pills-pending").appendChild(row);
+            }
+        } else if (rstatus === 2) {
+            for (let reimb of data) {
+                console.log(reimb);
+                let row = document.createElement("section");
+                row.className("reimbursement mb-5");
+                let article = document.createElement("article");
+                article.className("p-5 border rounded shadow");
+                row.appendChild(article);
+                document.getElementById("pills-approve").appendChild(row);
+            }
+        } else if (rstatus === 3) {
+            for (let reimb of data) {
+                console.log(reimb);
+                let row = document.createElement("section");
+                row.className("reimbursement mb-5");
+                let article = document.createElement("article");
+                article.className("p-5 border rounded shadow");
+                row.appendChild(article);
+                document.getElementById("pills-declined").appendChild(row);
+            }
+        }
+    }
+}
 
-    let reimb = {
-        ramt: amt,
-        rdate: datee,
-        rtype: type,
-        rstatus: statuss
-    };
-
-    console.log(reimb);
-
-    let resp = await fetch(url + "reimbursement", {
-        method: 'POST',
-        body: JSON.stringify(reimb),
+async function logout() {
+    let resp = await fetch(url + "logout", {
         credentials: "include"
     });
 
-    if (resp.status === 201) {
-        findAllFunc();
-    } else {
-        document.getElementById("pills-all-msg").innerText = "Reimbursement could not be added.";
+    if (resp.status === 200) {
+        window.location.href = "index.html";
     }
-
 }

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.models.UType;
+import com.revature.models.User;
 
 public class MasterServlet extends HttpServlet {
 
@@ -47,16 +47,18 @@ public class MasterServlet extends HttpServlet {
 							int id = Integer.parseInt(portions[2]);
 							rc.getReimbType(res, id);
 						} else if (portions.length == 1) {
-							if (lc.setUser(req, res).getType().equals(UType.EMPLOYEE)) {
-								int id = lc.setUser(req, res).getId();
-								rc.getReimbUser(req, res, id);
+							User u = lc.setUser(req, res);
+							if (u.getType().getId() == 2) {
+								int id = u.getId();
+								rc.getReimbUser(res, id);
+							} else {
+								rc.getAllReimb(res);
 							}
-							rc.getAllReimb(res);
 						}
 					} else if (req.getMethod().equals("POST")) {
-						if (portions.length == 2 && portions[1].equals("add")) {
+						if (lc.setUser(req, res).getType().getId() == 2) {
 							rc.addReimb(req, res);
-						} else if (portions.length == 2 && portions[1].equals("update")) {
+						} else if (lc.setUser(req, res).getType().getId() == 1) {
 							rc.updateReimb(req, res);
 						}
 					}

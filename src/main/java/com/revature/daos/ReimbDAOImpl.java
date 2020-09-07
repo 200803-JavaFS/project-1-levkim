@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import com.revature.models.Reimb;
 import com.revature.models.ReimbStatus;
 import com.revature.models.ReimbType;
+import com.revature.models.User;
 import com.revature.util.ConnectUtil;
 
 public class ReimbDAOImpl implements ReimbDAO {

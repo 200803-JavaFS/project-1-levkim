@@ -17,9 +17,8 @@ public class Application {
 	
 	public static void main(String[] args) {
 		
-		
 		List<User> users = udao.findAll();
-		List<Reimb> reimbs = rdao.findAll();
+		List<Reimb> reimbs = rdao.findByUser(1);
 		
 		for (User u : users) {
 			System.out.println(u);

@@ -40,7 +40,7 @@ public class ReimbController {
 		res.setStatus(200);
 	}
 	
-	public void getReimbUser(HttpServletRequest req, HttpServletResponse res, int id) throws IOException {
+	public void getReimbUser(HttpServletResponse res, int id) throws IOException {
 		List<Reimb> author = rs.findByUser(id);
 		res.getWriter().println(om.writeValueAsString(author));
 		res.setStatus(200);

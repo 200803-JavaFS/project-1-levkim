@@ -110,7 +110,7 @@ async function findAllFunc() {
 async function findOne() {
     let id = document.getElementById("reimbId").value;
 
-    let resp = await fetch(url + "reimbursement", id, {
+    let resp = await fetch(url + "reimbursement/" + id, {
         method: "GET",
         credentials: "include"
     });
@@ -137,7 +137,7 @@ async function findOne() {
         cell4.innerHTML = reimb.author.first_name + " " + reimb.author.last_name;
         row.appendChild(cell4);
         let cell5 = document.createElement("td");
-        if (reimb.resolved == null) {
+        if (reimb.resolved == null || reimb.resolver == null) {
             cell5.innerHTML = "not yet resolved.";
         } else {
             cell5.innerHTML = reimb.resolved.month + " " + reimb.resolved.dayOfMonth + ", " + reimb.resolved.year;

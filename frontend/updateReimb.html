@@ -27,7 +27,7 @@
                 <a class="nav-link m-1" href="manager.html">View All Reimbursements</a>
                 <a class="nav-link m-1" href="updateReimb.html">Update Reimbursements</a>
             </div>
-        
+
             <a class="nav-link btn btn-danger ml-auto" id="logoutBtn" onclick="logout()" href="#">Log Out</a>
         </div>
     </nav>
@@ -47,13 +47,14 @@
                 <h3 class="h3 mb-3 ml-3">Update Reimbursement</h3>
                 <div class="form-row mb-3 ml-auto">
                     <div class="col">
-                        <input class="form-control" type="text" name="id" id="reimbId" placeholder="search for reimbursement ID here" />
+                        <input class="form-control" type="text" name="id" id="reimbId"
+                            placeholder="search for reimbursement ID here" />
                     </div>
                     <div class="col">
                         <button class="btn btn-success" onclick="findOne()">Find</button>
                     </div>
                 </div>
-                
+
                 <article class="p-5 border rounded shadow">
                     <table class="table table-hover">
                         <thead>
@@ -71,6 +72,20 @@
                         <tbody id="one-reimb">
                         </tbody>
                     </table>
+                    <h5 class="h5 mt-5 mb-3">What would you like to do with this reimbursement?</h5>
+                    <div class="form-row">
+                        <div class="col">
+                            <label class="check-label" for="approve">Approve: </label>
+                            <input class="check-input" type="radio" name="update" id="approve" value="2" />
+                        </div>
+                        <div class="col">
+                            <label class="check-label" for="deny">Decline: </label>
+                            <input class="check-input" type="radio" name="update" id="decline" value="3" />
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-primary" type="submit" onclick="update()">Update</button>
+                        </div>
+                    </div>
                     <p class="mt-5" id="add-msg"></p>
                 </article>
             </div>

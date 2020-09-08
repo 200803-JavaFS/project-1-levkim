@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "http://localhost:8080/project1",
+    "pathRewrite": "reimbursement",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

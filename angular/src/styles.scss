@@ -1,8 +1,30 @@
 // variables
-$primary:#4C5270;
-$secondary: #BCECE0;
-$cyan: #36EEE0;
-$pink: #F652A0;
+$theme-colors: (
+    "primary":#4C5270,
+    "secondary": #BCECE0,
+    "cyan": #36EEE0,
+    "pink": #F652A0,
+);
 
+// custom variables
+$body: 'Inter', sans-serif;
+$title: 'Recursive', monospace;
+
+body {
+    font-family: $body;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $title;
+    font-feature-settings: "CRSV" 1;
+    font-weight: normal;
+    font-style: italic;
+}
+
+code, pre, kbd {
+    font-family: $title;
+    font-feature-settings: "MONO" 1;
+    font-weight: 540;
+}
 
 @import "../node_modules/bootstrap/scss/bootstrap";

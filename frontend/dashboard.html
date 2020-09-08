@@ -24,42 +24,34 @@
                 <a class="nav-link m-1" href="#">Add New Reimbursement</a>
             </div>
 
-            <a class="nav-link btn btn-danger ml-auto" href="#">Log Out</a>
+            <a class="nav-link btn btn-danger ml-auto" href="#" onclick="logout()">Log Out</a>
         </div>
     </nav>
 
     <main class="container col-12 mb-5">
         <div class="row justify-content-center">
             <header class="col-12 jumbotron text-center">
-                <h1 class="h1">Company title</h1>
-                <h2 class="lead h2">Reimbursement Center</h2>
+                <h1 class="h1">World Stars Co</h1>
+                <h2 class="lead h2">Employee Reimbursement Center</h2>
             </header>
         </div>
 
         <div class="row justify-content-center">
-            <aside class="nav nav-pills nav-justified flex-column col-md-3 p-5 mr-5 border-right d-none d-sm-none d-md-block" id="pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">all reimbursements</a>
-                <a class="nav-link" id="pills-pends-tab" data-toggle="pill" href="#pills-pends" role="tab" aria-controls="pills-pends" aria-selected="false">pending</a>
-                <a class="nav-link" id="pills-approve-tab" data-toggle="pill" href="#pills-approve" role="tab" aria-controls="pills-approve" aria-selected="false">approved</a>
-                <a class="nav-link" id="pills-denied-tab" data-toggle="pill" href="#pills-denied" role="tab" aria-controls="pills-denied" aria-selected="false">denied</a>
-                <form class="form-inline mt-2" method="GET" action="#">
-                    <input class="form-control" type="search" name="findId" id="findId" placeholder="Enter ID to search">
-                </form>
+            <aside class="nav nav-pills nav-justified flex-column col-md-3 col-sm-8 p-5 mr-5 border-right d-none d-sm-none d-md-block" id="pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link" id="pills-all-tab" onclick="findAllFunc()" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">all reimbursements</a>
+                <a class="nav-link" id="pills-pends-tab" onclick="findStatus()" data-toggle="pill" href="#pills-pends" role="tab" aria-controls="pills-pends" aria-selected="false">pending</a>
+                <a class="nav-link" id="pills-approve-tab" onclick="findStatus()" data-toggle="pill" href="#pills-approve" role="tab" aria-controls="pills-approve" aria-selected="false">approved</a>
+                <a class="nav-link" id="pills-denied-tab" onclick="findStatus()" data-toggle="pill" href="#pills-denied" role="tab" aria-controls="pills-denied" aria-selected="false">denied</a>
             </aside>
 
             <section class="col-md-8 mt-5 tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
+                    <h3 class="h3 mb-3 text-center">All Reimbursements</h3>
                     <div class="reimbursement mb-5">
-                        <h3 class="h3 mb-3 text-center">All Reimbursements</h3>
                         <article class="p-5 border rounded shadow">
-                        <p>reimbursement</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi culpa eligendi vel quaerat laborum aperiam, harum beatae perspiciatis minus totam iste, tempora nobis? Ipsam pariatur in omnis minus rem. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa rerum voluptate hic, voluptates dicta eligendi dolorum provident suscipit quas ratione repellat eveniet qui perferendis quidem explicabo soluta est aut mollitia.</p>
-                        <code>
-                            public Timestamp getCurrentTime() {
-                            Date date = new Date();
-                            return Timestamp(date.getTime());
-                            }
-                        </code>
+                            <table class="table table-hover" id="all-reimb">
+                                
+                            </table>
                         </article>
                     </div>
                 </div>
@@ -67,19 +59,9 @@
                     <div class="reimbursement mb-5">
                         <h3 class="h3 mb-3 text-center">Pending Reimbursements</h3>
                         <article class="p-5 border rounded shadow">
-                            <p>reimbursement</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi culpa eligendi vel
-                                quaerat laborum aperiam, harum beatae perspiciatis minus totam iste, tempora nobis?
-                                Ipsam pariatur in omnis minus rem. Lorem ipsum, dolor sit amet consectetur adipisicing
-                                elit. Ipsa rerum voluptate hic, voluptates dicta eligendi dolorum provident suscipit
-                                quas ratione repellat eveniet qui perferendis quidem explicabo soluta est aut mollitia.
-                            </p>
-                            <code>
-                                public Timestamp getCurrentTime() {
-                                Date date = new Date();
-                                return Timestamp(date.getTime());
-                                }
-                            </code>
+                            <table class="table table-hover" id="pend-reimb">
+                            
+                            </table>
                         </article>
                     </div>
                 </div>
@@ -87,19 +69,9 @@
                     <div class="reimbursement mb-5">
                         <h3 class="h3 mb-3 text-center">Approved Reimbursements</h3>
                         <article class="p-5 border rounded shadow">
-                            <p>reimbursement</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi culpa eligendi vel
-                                quaerat laborum aperiam, harum beatae perspiciatis minus totam iste, tempora nobis?
-                                Ipsam pariatur in omnis minus rem. Lorem ipsum, dolor sit amet consectetur adipisicing
-                                elit. Ipsa rerum voluptate hic, voluptates dicta eligendi dolorum provident suscipit
-                                quas ratione repellat eveniet qui perferendis quidem explicabo soluta est aut mollitia.
-                            </p>
-                            <code>
-                                public Timestamp getCurrentTime() {
-                                Date date = new Date();
-                                return Timestamp(date.getTime());
-                                }
-                            </code>
+                            <table class="table table-hover" id="app-reimb">
+                        
+                            </table>
                         </article>
                     </div>
                 </div>
@@ -107,19 +79,9 @@
                     <div class="reimbursement mb-5">
                         <h3 class="h3 mb-3 text-center">Denied Reimbursements</h3>
                         <article class="p-5 border rounded shadow">
-                            <p>reimbursement</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi commodi culpa eligendi vel
-                                quaerat laborum aperiam, harum beatae perspiciatis minus totam iste, tempora nobis?
-                                Ipsam pariatur in omnis minus rem. Lorem ipsum, dolor sit amet consectetur adipisicing
-                                elit. Ipsa rerum voluptate hic, voluptates dicta eligendi dolorum provident suscipit
-                                quas ratione repellat eveniet qui perferendis quidem explicabo soluta est aut mollitia.
-                            </p>
-                            <code>
-                                public Timestamp getCurrentTime() {
-                                Date date = new Date();
-                                return Timestamp(date.getTime());
-                                }
-                            </code>
+                            <table class="table table-hover" id="deny-reimb">
+                        
+                            </table>
                         </article>
                     </div>
                 </div>

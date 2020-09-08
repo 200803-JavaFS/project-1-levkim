@@ -17,6 +17,7 @@ public class LoginController {
 	
 	private static LoginService ls = new LoginService();
 	private static ObjectMapper om = new ObjectMapper();
+	private User u;
 	
 	public void login(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		if (req.getMethod().equals("GET")) {
@@ -34,7 +35,7 @@ public class LoginController {
 			
 			String body = new String(sb);
 			LoginDTO l = om.readValue(body, LoginDTO.class);
-			User u = ls.login(l);
+			u = ls.login(l);
 			
 			if (u != null) {
 				HttpSession ses = req.getSession();
@@ -71,15 +72,18 @@ public class LoginController {
 	
 	public User setUser(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		if (req.getMethod().equals("GET")) {
-			HttpSession ses = req.getSession();
 			res.setStatus(200);
-			User u = (User) ses.getAttribute("user");
-			String json = om.writeValueAsString(u);
-			res.getWriter().println(json);
 			return u;
 		} else {
 			res.getWriter().println("Something went wrong with checking user details.");
 			return null;
+		}
+	}
+	
+	public void json(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		if (u != null) {
+			String json = om.writeValueAsString(u);
+			res.getWriter().println(json);
 		}
 	}
 

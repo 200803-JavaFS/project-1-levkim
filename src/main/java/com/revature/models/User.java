@@ -200,16 +200,11 @@ public class User {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "User #" + id + "\n"
-				+ "   Username: " + username + "\n"
-				+ "   Password: " + password + "\n"
-				+ "   First Name: " + first_name + "\n"
-				+ "   Last Name: " + last_name + "\n"
-				+ "   Email: " + email + "\n"
-				+ "   Type: " + type.getType();
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", first_name=" + first_name
+				+ ", last_name=" + last_name + ", email=" + email + ", type=" + type + "]";
 	}
 	
 }

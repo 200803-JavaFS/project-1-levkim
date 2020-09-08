@@ -1,6 +1,7 @@
 package com.revature.models;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -247,18 +248,12 @@ public class Reimb {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Reimbursement #" + id + "\n"
-				+ "   Submitted On: " + submitted + "\n"
-			    + "   Resolved On: " + resolved + "\n"
-			    + "   Description: " + description + "\n"
-			    + "   Receipt: " + receipt + "\n"
-			    + "   Author: " + author.getFirst_name() + " " + author.getLast_name() + "\n"
-			    + "   Resolver: " + resolver + "\n"
-			    + "   Status: " + status.getStatus() + "\n"
-			    + "   Type: " + type.getType();
+		return "Reimb [id=" + id + ", amt=" + amt + ", submitted=" + submitted + ", resolved=" + resolved
+				+ ", description=" + description + ", receipt=" + Arrays.toString(receipt) + ", author=" + author
+				+ ", resolver=" + resolver + ", status=" + status + ", type=" + type + "]";
 	}
 
 }

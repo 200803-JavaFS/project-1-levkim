@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bootstrap</title>
+    <title>Add Reimbursement</title>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,300..800&family=Recursive:slnt,wght,CRSV,MONO@-15..0,300..800,0..1,0..1&display=swap"
@@ -16,7 +16,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand mr-3" href="#">World Stars Co.</a>
+        <a class="navbar-brand mr-3" href="dashboard.html">World Stars Co.</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarExpandContent"
             aria-controls="navbarExpandContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,17 +24,10 @@
 
         <div class="collapse navbar-collapse" id="navbarExpandContent">
             <div class="navbar-nav">
-                <a class="nav-link" href="#">active</a>
-                <a class="nav-link" href="#">active</a>
-                <a class="nav-link" href="#">active</a>
-                <a class="nav-link" href="#">active</a>
-                <a class="nav-link" href="#">active</a>
+                <a class="nav-link" href="/details">Profile</a>
             </div>
 
-            <form class="form-inline ml-auto">
-                <input class="form-control" id="findId" type="search" placeholder="Enter ID to search."
-                    aria-label="search">
-            </form>
+            <a class="nav-link btn btn-danger ml-auto" href="#" onclick="logout()">Log Out</a>
         </div>
     </nav>
 
@@ -52,26 +45,28 @@
             <div class="col-md-9">
                 <h3 class="h3 mb-3 ml-3">Add New Reimbursement</h3>
                 <article class="p-5 border rounded shadow">
-                    <form action="#" method="post">
-                        <div class="form-group">
-                            <label for="amount">Amount of Reimbursement</label>
-                            <input class="form-control" type="number" name="amount">
-                        </div>
-                        <div class="form-group">
-                            <label for="type">Select Type</label>
-                            <select class="form-control" name="type" id="reimb_type">
-                                <option value="1">Travel</option>
-                                <option value="2">Lodging</option>
-                                <option value="3">Food</option>
-                                <option value="4">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="receipt">Upload Image of Receipt</label>
-                            <input class="form-control-file" type="file" name="receipt" id="reimb_receipt">
-                        </div>
-                        <button class="btn btn-success" type="submit">Send</button>
-                    </form>
+                    <div class="form-group">
+                        <label for="amount">Amount of Reimbursement</label>
+                        <input class="form-control" type="number" name="amount" id="amount">
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Select Type</label>
+                        <select class="form-control" name="type" id="reimb_type">
+                            <option value="1">Travel</option>
+                            <option value="2">Lodging</option>
+                            <option value="3">Food</option>
+                            <option value="4">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="desc" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="receipt">Upload Image of Receipt</label>
+                        <input class="form-control-file" type="file" name="receipt" id="reimb_receipt">
+                    </div>
+                    <button class="btn btn-success" type="submit">Send</button>
                 </article>
             </div>
         </section>
@@ -79,14 +74,14 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-    </script>
-    <script src="javascript.js"></script>
+        </script>
+    <script src="system.js"></script>
 </body>
 
 </html>

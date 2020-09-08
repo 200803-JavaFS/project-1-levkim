@@ -20,6 +20,15 @@ public class ReimbDTO {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public ReimbDTO(double amt, String description, byte[] receipt, int author, int type) {
+		super();
+		this.amt = amt;
+		this.description = description;
+		this.receipt = receipt;
+		this.author = author;
+		this.type = type;
+	}
+
 	public ReimbDTO(double amt, LocalDateTime submitted, LocalDateTime resolved, int author, int resolver, int status,
 			int type) {
 		super();

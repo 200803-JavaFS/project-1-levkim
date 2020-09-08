@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Reimbursement</title>
+    <title>Update Reimbursement</title>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,300..800&family=Recursive:slnt,wght,CRSV,MONO@-15..0,300..800,0..1,0..1&display=swap"
@@ -16,7 +16,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand mr-3" href="dashboard.html">World Stars Co.</a>
+        <a class="navbar-brand mr-3" href="manager.html">World Stars Co.</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarExpandContent"
             aria-controls="navbarExpandContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,11 +24,11 @@
 
         <div class="collapse navbar-collapse" id="navbarExpandContent">
             <div class="navbar-nav">
-                <a class="nav-link m-1" href="dashboard.html">View All Reimbursements</a>
-                <a class="nav-link m-1" href="addReimb.html">Add New Reimbursement</a>
+                <a class="nav-link m-1" href="manager.html">View All Reimbursements</a>
+                <a class="nav-link m-1" href="updateReimb.html">Update Reimbursements</a>
             </div>
         
-            <a class="nav-link btn btn-danger ml-auto" href="#" onclick="logout()">Log Out</a>
+            <a class="nav-link btn btn-danger ml-auto" id="logoutBtn" onclick="logout()" href="#">Log Out</a>
         </div>
     </nav>
 
@@ -44,30 +44,33 @@
 
         <section class="row justify-content-center">
             <div class="col-md-9">
-                <h3 class="h3 mb-3 ml-3">Add New Reimbursement</h3>
+                <h3 class="h3 mb-3 ml-3">Update Reimbursement</h3>
+                <div class="form-row mb-3 ml-auto">
+                    <div class="col">
+                        <input class="form-control" type="text" name="id" id="reimbId" placeholder="search for reimbursement ID here" />
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-success" onclick="findOne(id.value)">Find</button>
+                    </div>
+                </div>
+                
                 <article class="p-5 border rounded shadow">
-                    <div class="form-group">
-                        <label for="amount">Amount of Reimbursement</label>
-                        <input class="form-control" type="number" name="amount" id="amount">
-                    </div>
-                    <div class="form-group">
-                        <label for="type">Select Type</label>
-                        <select class="form-control" name="type" id="reimb_type">
-                            <option value="1">Travel</option>
-                            <option value="2">Lodging</option>
-                            <option value="3">Food</option>
-                            <option value="4">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea class="form-control" name="description" id="desc" cols="30" rows="10"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="receipt">Upload Image of Receipt</label>
-                        <input class="form-control-file" type="file" name="receipt" id="reimb_receipt">
-                    </div>
-                    <button class="btn btn-success" type="submit" onclick="AddFunc()">Send</button>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" id="id">ID</th>
+                                <th scope="col" id="amt">Amount</th>
+                                <th scope="col" id="submitted">Submitted</th>
+                                <th scope="col" id="author">Author</th>
+                                <th scope="col" id="resolved">Resolved</th>
+                                <th scope="col" id="resolver">Resolver</th>
+                                <th scope="col" id="status">Status</th>
+                                <th scope="col" id="type">Type</th>
+                            </tr>
+                        </thead>
+                        <tbody id="one-reimb">
+                        </tbody>
+                    </table>
                     <p class="mt-5" id="add-msg"></p>
                 </article>
             </div>

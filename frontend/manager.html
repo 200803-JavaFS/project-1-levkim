@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onload="findAllFunc()">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand mr-3" href="#">World Stars Co.</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarExpandContent"
@@ -24,7 +24,8 @@
 
         <div class="collapse navbar-collapse" id="navbarExpandContent">
             <div class="navbar-nav">
-                <a class="nav-link m-1" href="#">View All Reimbursements</a>
+                <a class="nav-link m-1" href="manager.html">View All Reimbursements</a>
+                <a class="nav-link m-1" href="updateReimb.html">Update Reimbursements</a>
             </div>
 
             <a class="nav-link btn btn-danger ml-auto" id="logoutBtn" onclick="logout()" href="#">Log Out</a>
@@ -34,15 +35,14 @@
     <main class="container col-12 mb-5">
         <div class="row justify-content-center">
             <header class="col-12 jumbotron text-center">
-                <h1 class="h1">Company title</h1>
-                <h2 class="lead h2">Reimbursement Center</h2>
+                <h1 class="h1">World Stars Co</h1>
+                <h2 class="lead h2">Employee Reimbursement Center</h2>
             </header>
         </div>
 
         <div class="row justify-content-center">
             <section class="col-md-8 mt-5">
                 <h3 class="h3 mb-3 text-center">Find All Reimbursements</h3>
-                <button class="btn btn-success mb-3" onclick="findAllFunc()">Find all Reimbursements</button>
                 <article class="p-5 border rounded shadow">
                     <table class="table table-hover">
                         <thead>

@@ -52,11 +52,7 @@ public class MasterServlet extends HttpServlet {
 						}
 					}
 				} else if (req.getMethod().equals("POST")) {
-					if (lc.setUser(req, res).getType().getId() == 2) {
-						rc.addReimb(req, res);
-					} else if (lc.setUser(req, res).getType().getId() == 1) {
-						rc.updateReimb(req, res);
-					}
+					rc.addReimb(req, res);
 				}
 				break;
 			case "login":

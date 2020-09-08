@@ -40,6 +40,7 @@ async function redirect() {
     let data = await resp.json();
     let id = data.id;
     console.log(data);
+    sessionStorage.setItem("user", id);
 
     if (data.type.id === 2) {
         window.location.href = "dashboard.html";
@@ -65,7 +66,6 @@ async function findAllFunc() {
         
         for (let reimb of data) {
             console.log(reimb);
-
 
             let row = document.createElement("tr");
             let cell = document.createElement("td");
@@ -107,53 +107,73 @@ async function findAllFunc() {
     }
 }
 
-async function findStatus() {
-    let resp = await fetch(url + "reimbursement/" + "status", {
-        method: 'GET',
-        credentials: 'include'
+async function findOne(id) {
+    let resp = await fetch(url + "reimbursement", id, {
+        method: "GET",
+        credentials: "include"
     });
+
+    console.log(resp.json);
 
     if (resp.status === 200) {
         let data = await resp.json();
-        let rstatus = data.status.id;
-        if (rstatus === 1) {
-            for (let reimb of data) {
-                console.log(reimb);
-                let pend = document.getElementById("pend-reimb");
-                pend.innerHTML = '';
-                pend.appendChild(make(data));
-            }
-        } else if (rstatus === 2) {
-            for (let reimb of data) {
-                console.log(reimb);
-                let approve = document.getElementById("app-reimb");
-                approve.innerHTML = '';
-                approve.appendChild(make(data));
-            }
-        } else if (rstatus === 3) {
-            for (let reimb of data) {
-                console.log(reimb);
-                let decline = document.getElementById("deny-reimb");
-                decline.innerHTML = '';
-                decline.appendChild(make(data));
-            }
+        document.getElementById("one-reimb").innerText = "";
+        
+        console.log(data);
+
+        let row = document.createElement("tr");
+        let cell = document.createElement("td");
+        cell.innerHTML = reimb.id;
+        row.appendChild(cell);
+        let cell2 = document.createElement("td");
+        cell2.innerHTML = reimb.amt;
+        row.appendChild(cell2);
+        let cell3 = document.createElement("td");
+        cell3.innerHTML = reimb.submitted.month + " " + reimb.submitted.dayOfMonth + ", " + reimb.submitted.year;
+        row.appendChild(cell3);
+        let cell4 = document.createElement("td");
+        cell4.innerHTML = reimb.author.first_name + " " + reimb.author.last_name;
+        row.appendChild(cell4);
+        let cell5 = document.createElement("td");
+        if (reimb.resolved == null) {
+            cell5.innerHTML = "not yet resolved.";
+        } else {
+            cell5.innerHTML = reimb.resolved.month + " " + reimb.resolved.dayOfMonth + ", " + reimb.resolved.year;
         }
+        row.appendChild(cell5);
+        let cell6 = document.createElement("td");
+        if (reimb.resolver == null) {
+            cell6.innerHTML = "no resolver";
+        } else {
+            cell6.innerHTML = reimb.resolver.first_name + " " + reimb.resolver.last_name;
+        }
+        row.appendChild(cell6);
+        let cell7 = document.createElement("td");
+        cell7.innerHTML = reimb.status.status;
+        row.appendChild(cell7);
+        let cell8 = document.createElement("td");
+        cell8.innerHTML = reimb.type.type;
+        row.appendChild(cell8);
+        document.getElementById("one-reimb").appendChild(row);
     }
 }
 
 async function AddFunc() {
 
-    let amt = document.getElementById("ramt").value;
-    let submit = new Date("");
-    let type = document.getElementById("rtype").value;
+    let amount = document.getElementById("amount").value;
+    let desc = document.getElementById("desc").value;
+    let typeId = document.getElementById("reimb_type").value;
+    let submit = new Date().getTime;
+    let user = sessionStorage.getItem("user");
 
     let reimb = {
-        ramt: amt,
-        rdate: submit,
-        rtype: type
+        amt: amount,
+        submitted: submit,
+        description: desc,
+        author: user,
+        status: 1,
+        type: typeId
     };
-
-    console.log(reimb);
 
     let resp = await fetch(url + "reimbursement", {
         method: 'POST',
@@ -169,6 +189,10 @@ async function AddFunc() {
 
 }
 
+async function update() {
+
+}
+
 async function logout() {
 
     let resp = await fetch(url + "logout", {
@@ -176,9 +200,9 @@ async function logout() {
     });
 
     if (resp.status === 200) {
-        window.location.href = "index.html";
+        window.location.replace("index.html");
     } else {
         sessionStorage.clear();
-        window.location.href = "index.html";
+        window.location.replace("index.html");
     }
 }

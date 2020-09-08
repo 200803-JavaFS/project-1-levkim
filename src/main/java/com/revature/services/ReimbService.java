@@ -43,6 +43,7 @@ public class ReimbService {
 		ReimbStatus status = dao.findStatusId(rd.status);
 		ReimbType type = dao.findTypeId(rd.type);
 		
+		
 		if (rd.receipt == null) {
 			Reimb r = new Reimb(rd.amt, rd.submitted, null, rd.description, null, u, null, status, type);
 			return dao.add(r);

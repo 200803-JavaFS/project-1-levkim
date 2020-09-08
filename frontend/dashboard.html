@@ -12,16 +12,17 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="findAllFunc()">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand mr-3" href="#">Home</a>
+        <a class="navbar-brand mr-3" href="dashboard.html">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarExpandContent" aria-controls="navbarExpandContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarExpandContent">
             <div class="navbar-nav">
-                <a class="nav-link m-1" href="#">Add New Reimbursement</a>
+                <a class="nav-link m-1" href="dashboard.html">View All Reimbursements</a>
+                <a class="nav-link m-1" href="addReimb.html">Add New Reimbursement</a>
             </div>
 
             <a class="nav-link btn btn-danger ml-auto" href="#" onclick="logout()">Log Out</a>
@@ -37,54 +38,26 @@
         </div>
 
         <div class="row justify-content-center">
-            <aside class="nav nav-pills nav-justified flex-column col-md-3 col-sm-8 p-5 mr-5 border-right d-none d-sm-none d-md-block" id="pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link" id="pills-all-tab" onclick="findAllFunc()" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">all reimbursements</a>
-                <a class="nav-link" id="pills-pends-tab" onclick="findStatus()" data-toggle="pill" href="#pills-pends" role="tab" aria-controls="pills-pends" aria-selected="false">pending</a>
-                <a class="nav-link" id="pills-approve-tab" onclick="findStatus()" data-toggle="pill" href="#pills-approve" role="tab" aria-controls="pills-approve" aria-selected="false">approved</a>
-                <a class="nav-link" id="pills-denied-tab" onclick="findStatus()" data-toggle="pill" href="#pills-denied" role="tab" aria-controls="pills-denied" aria-selected="false">denied</a>
-            </aside>
-
-            <section class="col-md-8 mt-5 tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
-                    <h3 class="h3 mb-3 text-center">All Reimbursements</h3>
-                    <div class="reimbursement mb-5">
-                        <article class="p-5 border rounded shadow">
-                            <table class="table table-hover" id="all-reimb">
-                                
-                            </table>
-                        </article>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="pills-pends" role="tabpanel" aria-labelledby="pills-pends-tab">
-                    <div class="reimbursement mb-5">
-                        <h3 class="h3 mb-3 text-center">Pending Reimbursements</h3>
-                        <article class="p-5 border rounded shadow">
-                            <table class="table table-hover" id="pend-reimb">
-                            
-                            </table>
-                        </article>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="pills-approve" role="tabpanel" aria-labelledby="pills-approve-tab">
-                    <div class="reimbursement mb-5">
-                        <h3 class="h3 mb-3 text-center">Approved Reimbursements</h3>
-                        <article class="p-5 border rounded shadow">
-                            <table class="table table-hover" id="app-reimb">
-                        
-                            </table>
-                        </article>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="pills-denied" role="tabpanel" aria-labelledby="pills-denied-tab">
-                    <div class="reimbursement mb-5">
-                        <h3 class="h3 mb-3 text-center">Denied Reimbursements</h3>
-                        <article class="p-5 border rounded shadow">
-                            <table class="table table-hover" id="deny-reimb">
-                        
-                            </table>
-                        </article>
-                    </div>
-                </div>
+            <section class="col-md-8 mt-5">
+                <h3 class="h3 mb-3 text-center">Find All Reimbursements</h3>
+                <article class="p-5 border rounded shadow">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" id="id">ID</th>
+                                <th scope="col" id="amt">Amount</th>
+                                <th scope="col" id="submitted">Submitted</th>
+                                <th scope="col" id="author">Author</th>
+                                <th scope="col" id="resolved">Resolved</th>
+                                <th scope="col" id="resolver">Resolver</th>
+                                <th scope="col" id="status">Status</th>
+                                <th scope="col" id="type">Type</th>
+                            </tr>
+                        </thead>
+                        <tbody id="all-reimb">
+                        </tbody>
+                    </table>
+                </article>
             </section>
         </div>
     </main>

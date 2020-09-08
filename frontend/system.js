@@ -107,7 +107,9 @@ async function findAllFunc() {
     }
 }
 
-async function findOne(id) {
+async function findOne() {
+    let id = document.getElementById("reimbId").value;
+
     let resp = await fetch(url + "reimbursement", id, {
         method: "GET",
         credentials: "include"
@@ -116,10 +118,10 @@ async function findOne(id) {
     console.log(resp.json);
 
     if (resp.status === 200) {
-        let data = await resp.json();
+        let reimb = await resp.json();
         document.getElementById("one-reimb").innerText = "";
         
-        console.log(data);
+        console.log(reimb);
 
         let row = document.createElement("tr");
         let cell = document.createElement("td");
